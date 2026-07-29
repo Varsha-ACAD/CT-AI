@@ -1,1126 +1,2496 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LEA-101 · Instructor Guide · Critical Thinking in the Age of AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#F7F4EF;
-    --paper-2:#FBF9F5;
-    --card:#FFFFFF;
-    --ink:#232028;
-    --ink-soft:#54505E;
-    --ink-faint:#847F8C;
-    --indigo:#3B3564;
-    --indigo-bright:#534AB7;
-    --hair:#E4DFD5;
-    --hair-strong:#D6D0C4;
-    --settled:#0F6E56;
-    --settled-bg:#E4F1EB;
-    --progress:#9A6212;
-    --progress-bg:#F7ECD9;
-    --open:#534AB7;
-    --open-bg:#ECEAFB;
-    --blank:#6E6C66;
-    --blank-bg:#EBE8E1;
-    --radius:12px;
-    --maxw:1080px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Spline Sans",system-ui,sans-serif;
-    font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--indigo-bright);text-decoration:none}
-  a:hover{text-decoration:underline}
-  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.15;margin:0}
-  .mono{font-family:"Spline Sans Mono",monospace}
+  <script type="text/javascript" src="https://livejs.com/live.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEA-101 · Instructor Guide · Critical Thinking in the Age of AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F7F4EF;
+      --paper-2: #FBF9F5;
+      --card: #FFFFFF;
+      --ink: #232028;
+      --ink-soft: #54505E;
+      --ink-faint: #847F8C;
+      --indigo: #3B3564;
+      --indigo-bright: #534AB7;
+      --hair: #E4DFD5;
+      --hair-strong: #D6D0C4;
+      --settled: #0F6E56;
+      --settled-bg: #E4F1EB;
+      --progress: #9A6212;
+      --progress-bg: #F7ECD9;
+      --open: #534AB7;
+      --open-bg: #ECEAFB;
+      --blank: #6E6C66;
+      --blank-bg: #EBE8E1;
+      --radius: 12px;
+      --maxw: 1080px;
+    }
 
-  /* ---- top nav ---- */
-  nav.top{
-    position:sticky;top:0;z-index:50;background:rgba(247,244,239,.88);
-    backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--hair);
-  }
-  nav.top .inner{max-width:var(--maxw);margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
-  nav.top .code{font-family:"Spline Sans Mono",monospace;font-size:.8rem;letter-spacing:.05em;color:var(--indigo);background:var(--card);border:1px solid var(--hair-strong);padding:.2rem .5rem;border-radius:6px}
-  nav.top .links{display:flex;gap:1.1rem;flex-wrap:wrap;font-size:.85rem}
-  nav.top .links a{color:var(--ink-soft)}
-  nav.top .links a:hover{color:var(--indigo-bright);text-decoration:none}
+    * {
+      box-sizing: border-box
+    }
 
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem}
-  section{padding:3.4rem 0;border-bottom:1px solid var(--hair)}
-  section:last-of-type{border-bottom:none}
+    html {
+      scroll-behavior: smooth
+    }
 
-  /* ---- status tags ---- */
-  .tag{display:inline-flex;align-items:center;gap:.4em;font-family:"Spline Sans Mono",monospace;
-    font-size:.68rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
-    padding:.2em .6em;border-radius:100px;white-space:nowrap;vertical-align:middle}
-  .tag::before{content:"";width:.5em;height:.5em;border-radius:50%;background:currentColor;flex:none}
-  .tag.settled{color:var(--settled);background:var(--settled-bg)}
-  .tag.progress{color:var(--progress);background:var(--progress-bg)}
-  .tag.open{color:var(--open);background:var(--open-bg)}
-  .tag.blank{color:var(--blank);background:var(--blank-bg)}
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+    }
 
-  .eyebrow{font-family:"Spline Sans Mono",monospace;font-size:.75rem;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--ink-faint);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
-  .eyebrow .n{color:var(--indigo-bright)}
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Spline Sans", system-ui, sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ---- hero ---- */
-  header.hero{padding:4.5rem 0 3.6rem;position:relative;overflow:hidden}
-  header.hero .kicker{font-family:"Spline Sans Mono",monospace;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo-bright);margin-bottom:1.4rem}
-  header.hero h1{font-size:clamp(2.6rem,6vw,4.7rem);font-weight:500;letter-spacing:-.015em;max-width:15ch}
-  header.hero h1 em{font-style:italic;font-weight:400;color:var(--indigo)}
-  header.hero .sub{margin-top:1.5rem;font-size:1.15rem;color:var(--ink-soft);max-width:56ch}
-  .hero-anim{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
-  .hero-anim.d1{animation-delay:.05s}.hero-anim.d2{animation-delay:.18s}.hero-anim.d3{animation-delay:.3s}.hero-anim.d4{animation-delay:.42s}
-  @keyframes rise{to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.hero-anim{animation:none;opacity:1;transform:none}}
+    a {
+      color: var(--indigo-bright);
+      text-decoration: none
+    }
 
-  .metastrip{display:flex;gap:2.2rem;flex-wrap:wrap;margin-top:2.6rem;padding-top:1.8rem;border-top:1px solid var(--hair-strong)}
-  .metastrip .m{display:flex;flex-direction:column;gap:.15rem}
-  .metastrip .m .lab{font-family:"Spline Sans Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
-  .metastrip .m .val{font-size:1.05rem;font-weight:500}
-  .metastrip .m .val small{font-weight:400;color:var(--ink-faint)}
+    a:hover {
+      text-decoration: underline
+    }
 
-  /* ---- how to read (legend) ---- */
-  .legend{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.6rem 1.7rem;margin-top:2.8rem}
-  .legend h3{font-size:1.05rem;margin-bottom:.3rem}
-  .legend p.note{font-size:.9rem;color:var(--ink-soft);margin:.2rem 0 1.1rem}
-  .legend .rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem}
-  .legend .rows .r{display:flex;gap:.7rem;align-items:flex-start}
-  .legend .rows .r .txt{font-size:.85rem;color:var(--ink-soft)}
-  .legend .rows .r .txt b{color:var(--ink);font-weight:500}
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+      margin: 0
+    }
 
-  /* ---- generic ---- */
-  h2.sec{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:500;letter-spacing:-.01em;margin-bottom:.5rem}
-  .lead{font-size:1.05rem;color:var(--ink-soft);max-width:64ch;margin-bottom:2rem}
-  p{margin:0 0 1rem}
-  .prose{max-width:70ch}
-  .prose p{margin:0 0 1rem}
+    .mono {
+      font-family: "Spline Sans Mono", monospace
+    }
 
-  /* ---- fact table ---- */
-  .facts{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);overflow:hidden}
-  .facts tr{border-bottom:1px solid var(--hair)}
-  .facts tr:last-child{border-bottom:none}
-  .facts th{text-align:left;font-family:"Spline Sans Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;padding:.85rem 1.1rem;width:34%;vertical-align:top;background:var(--paper-2)}
-  .facts td{padding:.85rem 1.1rem;vertical-align:top}
-  .facts td .tag{margin-left:.4rem}
+    /* ---- top nav ---- */
+    nav.top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 244, 239, .88);
+      backdrop-filter: saturate(1.4) blur(8px);
+      border-bottom: 1px solid var(--hair);
+    }
 
-  /* ---- activity cards ---- */
-  .actgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem}
-  .actcard{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.4rem 1.4rem 1.5rem;display:flex;flex-direction:column;position:relative}
-  .actcard .num{font-family:"Fraunces",serif;font-size:1rem;font-weight:600;color:var(--indigo-bright)}
-  .actcard h3{font-size:1.28rem;margin:.15rem 0 .7rem}
-  .actcard p{font-size:.92rem;color:var(--ink-soft);margin:0 0 1.1rem;flex:1}
-  .actcard .foot{border-top:1px solid var(--hair);padding-top:.8rem;font-family:"Spline Sans Mono",monospace;font-size:.72rem;color:var(--ink-faint);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+    nav.top .inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: .7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap
+    }
 
-  /* ---- placeholder block ---- */
-  .placeholder{border:1.5px dashed var(--hair-strong);border-radius:var(--radius);background:repeating-linear-gradient(45deg,transparent,transparent 11px,rgba(0,0,0,.012) 11px,rgba(0,0,0,.012) 22px);padding:2rem 1.8rem}
-  .placeholder h3{font-size:1.2rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
-  .placeholder p{font-size:.95rem;color:var(--ink-soft);margin:0 0 .6rem;max-width:66ch}
-  .placeholder ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--ink-soft);font-size:.92rem}
-  .placeholder li{margin:.3rem 0}
+    nav.top .code {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .8rem;
+      letter-spacing: .05em;
+      color: var(--indigo);
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      padding: .2rem .5rem;
+      border-radius: 6px
+    }
 
-  /* ---- sprint rhythm strip ---- */
-  .rhythm{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.6rem 1.4rem 1.3rem;margin-bottom:1.8rem;overflow-x:auto}
-  .rhythm .weeks{display:flex;gap:1.3rem;min-width:760px}
-  .rhythm .week{flex:1;display:flex;flex-direction:column;gap:.6rem}
-  .rhythm .week .wlab{font-family:"Spline Sans Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
-  .rhythm .days{display:flex;gap:.4rem}
-  .rhythm .day{flex:1;border-radius:8px;padding:.55rem .3rem .5rem;text-align:center;border:1px solid var(--hair);background:var(--paper-2);position:relative}
-  .rhythm .day .dn{font-family:"Spline Sans Mono",monospace;font-size:.7rem;color:var(--ink-faint)}
-  .rhythm .day .dt{font-size:.72rem;font-weight:500;margin-top:.2rem;line-height:1.2}
-  .rhythm .day.media{background:#ECEAF4;border-color:#D5D0E6}.rhythm .day.media .dt{color:var(--indigo)}
-  .rhythm .day.game{background:var(--progress-bg);border-color:#EAD6B4}.rhythm .day.game .dt{color:var(--progress)}
-  .rhythm .day.project{background:var(--settled-bg);border-color:#C4E2D4}.rhythm .day.project .dt{color:var(--settled)}
-  .rhythm .day.present{background:var(--open-bg);border-color:#D3CEF3}.rhythm .day.present .dt{color:var(--open)}
-  .rhythm .rkey{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--hair);font-size:.75rem;color:var(--ink-soft)}
-  .rhythm .rkey span{display:inline-flex;align-items:center;gap:.4rem}
-  .rhythm .rkey i{width:.7rem;height:.7rem;border-radius:3px;display:inline-block}
+    nav.top .links {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      font-size: .85rem
+    }
 
-  /* ---- day template ---- */
-  .template{background:var(--paper-2);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.5rem 1.6rem;margin-bottom:1.8rem}
-  .template h3{font-size:1.15rem;margin-bottom:.3rem}
-  .template .flow{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;align-items:center}
-  .template .step{background:var(--card);border:1px solid var(--hair-strong);border-radius:8px;padding:.4rem .7rem;font-size:.82rem}
-  .template .step .t{font-family:"Spline Sans Mono",monospace;font-size:.64rem;color:var(--ink-faint);display:block}
-  .template .arrow{color:var(--ink-faint);font-size:.9rem}
+    nav.top .links a {
+      color: var(--ink-soft)
+    }
 
-  /* ---- day list ---- */
-  .days-detail{display:grid;gap:.7rem}
-  .drow{background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:.9rem 1.1rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:baseline}
-  .drow .badge{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;min-width:3.4rem;color:var(--indigo-bright)}
-  .drow .badge small{display:block;font-family:"Spline Sans Mono",monospace;font-weight:400;font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
-  .drow .body{font-size:.92rem;color:var(--ink-soft)}
-  .drow .body b{color:var(--ink);font-weight:500}
-  .drow .body .fw{font-style:italic;color:var(--indigo)}
-  .wk-divider{font-family:"Spline Sans Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:1.3rem 0 .3rem;display:flex;align-items:center;gap:.7rem}
-  .wk-divider::after{content:"";flex:1;height:1px;background:var(--hair)}
+    nav.top .links a:hover {
+      color: var(--indigo-bright);
+      text-decoration: none
+    }
 
-  /* ---- guide cards grid ---- */
-  .guides{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem}
-  .gcard{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.3rem 1.35rem;display:flex;flex-direction:column}
-  .gcard.stub{background:transparent;border-style:dashed}
-  .gcard h3{font-size:1.14rem;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem}
-  .gcard p{font-size:.88rem;color:var(--ink-soft);margin:0}
-  .gcard .more{margin-top:.9rem;font-family:"Spline Sans Mono",monospace;font-size:.72rem;color:var(--indigo-bright)}
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 1.5rem
+    }
 
-  /* ---- detailed guide (QG etc) ---- */
-  .guidedoc{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:2rem 2.1rem;margin-bottom:1.4rem}
-  .guidedoc > h3{font-size:1.5rem;margin-bottom:.4rem}
-  .guidedoc .meta{font-size:.9rem;color:var(--ink-soft);margin-bottom:1.4rem}
-  .stage{border-left:2px solid var(--hair-strong);padding:.1rem 0 .1rem 1.2rem;margin:1.2rem 0}
-  .stage .sh{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.35rem}
-  .stage .sh h4{font-size:1.08rem}
-  .stage .sh .dur{font-family:"Spline Sans Mono",monospace;font-size:.72rem;color:var(--ink-faint);background:var(--paper-2);padding:.1rem .5rem;border-radius:100px}
-  .stage ol,.stage ul{margin:.3rem 0;padding-left:1.15rem}
-  .stage li{margin:.32rem 0;font-size:.93rem;color:var(--ink-soft)}
-  .callout{background:var(--open-bg);border:1px solid #D3CEF3;border-radius:10px;padding:.9rem 1.1rem;margin:1rem 0;font-size:.9rem}
-  .callout .h{font-family:"Spline Sans Mono",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--open);margin-bottom:.3rem}
-  .callout.prov{background:var(--progress-bg);border-color:#EAD6B4}
-  .callout.prov .h{color:var(--progress)}
+    section {
+      padding: 3.4rem 0;
+      border-bottom: 1px solid var(--hair)
+    }
 
-  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 0}
-  .chip{background:var(--paper-2);border:1px solid var(--hair-strong);border-radius:100px;padding:.3rem .8rem;font-size:.83rem}
-  .chip.blank-chip{border-style:dashed;color:var(--ink-faint)}
+    section:last-of-type {
+      border-bottom: none
+    }
 
-  /* ---- rubric ---- */
-  .rubric{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;margin-top:1.4rem}
-  .crit{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.3rem 1.35rem}
-  .crit h4{font-size:1.15rem;margin-bottom:.15rem}
-  .crit .def{font-size:.86rem;color:var(--ink-soft);margin-bottom:.9rem}
-  .crit .lvl{display:flex;gap:.6rem;margin:.5rem 0;font-size:.85rem}
-  .crit .lvl .n{font-family:"Spline Sans Mono",monospace;font-size:.68rem;font-weight:500;padding:.12em .5em;border-radius:6px;height:fit-content;white-space:nowrap}
-  .crit .lvl.l1 .n{background:var(--blank-bg);color:var(--blank)}
-  .crit .lvl.l2 .n{background:var(--progress-bg);color:var(--progress)}
-  .crit .lvl.l3 .n{background:var(--settled-bg);color:var(--settled)}
-  .crit .lvl .d{color:var(--ink-soft)}
+    /* ---- status tags ---- */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .2em .6em;
+      border-radius: 100px;
+      white-space: nowrap;
+      vertical-align: middle
+    }
 
-  .quadrant-wrap{background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.6rem;margin-top:1.4rem;text-align:center}
-  .quadrant-wrap svg{max-width:640px;width:100%;height:auto}
-  .quadrant-wrap .cap{font-family:"Spline Sans Mono",monospace;font-size:.75rem;color:var(--ink-faint);margin-top:.8rem}
+    .tag::before {
+      content: "";
+      width: .5em;
+      height: .5em;
+      border-radius: 50%;
+      background: currentColor;
+      flex: none
+    }
 
-  /* ---- project tasks ---- */
-  .bigq{background:var(--indigo);color:#fff;border-radius:var(--radius);padding:1.8rem 2rem;margin-bottom:1.6rem}
-  .bigq .l{font-family:"Spline Sans Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:.6rem}
-  .bigq p{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:400;font-style:italic;margin:0;line-height:1.3}
-  .tasks{counter-reset:t;display:grid;gap:.55rem}
-  .task{display:grid;grid-template-columns:auto 1fr;gap:1rem;background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:.9rem 1.1rem}
-  .task::before{counter-increment:t;content:counter(t);font-family:"Fraunces",serif;font-weight:600;color:var(--indigo-bright);font-size:1.1rem;min-width:1.4rem}
-  .task .body{font-size:.92rem}
-  .task .body b{font-weight:500}
-  .task .body .sub{color:var(--ink-soft);display:block;margin-top:.15rem}
+    .tag.settled {
+      color: var(--settled);
+      background: var(--settled-bg)
+    }
 
-  /* ---- open questions ---- */
-  .oq{display:grid;gap:.6rem}
-  .oqrow{background:var(--card);border:1px solid var(--hair-strong);border-radius:10px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:start}
-  .oqrow .id{font-family:"Fraunces",serif;font-weight:600;font-size:1.15rem;color:var(--open);min-width:1.5rem}
-  .oqrow .q{font-size:.94rem}
-  .oqrow .q .ctx{display:block;margin-top:.25rem;font-size:.82rem;color:var(--ink-faint)}
-  .oqrow.resolved{opacity:.62}
-  .oqrow.resolved .id{color:var(--settled)}
+    .tag.progress {
+      color: var(--progress);
+      background: var(--progress-bg)
+    }
 
-  /* ---- outstanding ---- */
-  .outgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
-  .outcol h4{font-size:1rem;font-family:"Spline Sans",sans-serif;font-weight:600;margin-bottom:.7rem;padding-bottom:.4rem;border-bottom:1px solid var(--hair-strong);display:flex;align-items:center;gap:.5rem}
-  .outcol ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
-  .outcol li{font-size:.88rem;color:var(--ink-soft);padding-left:1.1rem;position:relative}
-  .outcol li::before{content:"";position:absolute;left:0;top:.6em;width:.4rem;height:.4rem;border-radius:50%;background:var(--hair-strong)}
+    .tag.open {
+      color: var(--open);
+      background: var(--open-bg)
+    }
 
-  /* ---- daily structure flow (no times) ---- */
-  .daily{background:var(--paper-2);border:1px solid var(--hair-strong);border-radius:var(--radius);padding:1.6rem 1.6rem 1.7rem;margin-bottom:2rem}
-  .daily h3{font-size:1.2rem;margin-bottom:.35rem}
-  .daily > p{font-size:.92rem;color:var(--ink-soft);margin:0 0 1.1rem;max-width:70ch}
-  .dflow{display:flex;flex-wrap:wrap;gap:.45rem;align-items:stretch}
-  .dstep{background:var(--card);border:1px solid var(--hair-strong);border-radius:9px;padding:.6rem .85rem;font-size:.9rem;font-weight:500;display:flex;align-items:center}
-  .dsep{display:flex;align-items:center;color:var(--ink-faint);font-size:1rem}
+    .tag.blank {
+      color: var(--blank);
+      background: var(--blank-bg)
+    }
 
-  /* ---- sprint grid (faithful to spreadsheet) ---- */
-  .gridscroll{overflow-x:auto;border:1px solid var(--hair-strong);border-radius:var(--radius);background:var(--card);-webkit-overflow-scrolling:touch}
-  table.sprint{border-collapse:collapse;min-width:1560px;width:100%;font-size:.8rem}
-  table.sprint th,table.sprint td{border:1px solid var(--hair);vertical-align:top;padding:.5rem .55rem}
-  table.sprint thead th{position:sticky;top:0;background:var(--ink);color:#fff;font-family:"Spline Sans Mono",monospace;font-weight:500;font-size:.66rem;letter-spacing:.03em;text-align:left;white-space:nowrap;z-index:2}
-  table.sprint thead th:first-child{width:44px;text-align:center}
-  table.sprint td.daynum,table.sprint th.daynum{position:sticky;left:0;background:var(--paper-2);text-align:center;font-family:"Fraunces",serif;font-weight:600;font-size:1rem;color:var(--indigo);z-index:1;width:44px}
-  table.sprint td .ct{font-weight:500;color:var(--ink);display:block;line-height:1.3}
-  table.sprint td .cs{color:var(--ink-soft);display:block;line-height:1.3;margin-top:.15rem;font-size:.76rem}
-  /* cell tags */
-  .ctag{display:inline-block;font-family:"Spline Sans Mono",monospace;font-size:.6rem;letter-spacing:.02em;font-weight:500;padding:.14em .45em;border-radius:5px;margin-top:.35rem;background:rgba(35,32,40,.07);color:var(--ink-soft);border:1px solid rgba(35,32,40,.09);line-height:1.3;white-space:normal}
-  .ctag .k{color:var(--ink-faint)}
-  .cblank{display:inline-block;font-family:"Spline Sans Mono",monospace;font-size:.62rem;color:var(--ink-faint);border:1px dashed var(--hair-strong);border-radius:5px;padding:.14em .45em;margin-top:.35rem}
-  /* session-type cell tints */
-  td.c-media{background:#F3EBDB}
-  td.c-game{background:#FADFC9}
-  td.c-quest{background:#F7E4EE}
-  td.c-ai{background:#E8E1F5}
-  td.c-disc{background:#E1EFE0}
-  td.c-refl{background:#DFEAF7}
-  td.c-proj{background:#D2EAE4}
-  td.c-port{background:#ECE6D9}
-  /* break spacer columns */
-  table.sprint td.brk{width:14px;min-width:14px;max-width:14px;padding:0;background:var(--paper);border-top:none;border-bottom:none;border-left:1px solid var(--hair-strong);border-right:1px solid var(--hair-strong)}
-  table.sprint thead th.brk{width:14px;min-width:14px;max-width:14px;padding:0;background:var(--paper);color:var(--paper);border-left:1px solid var(--hair-strong);border-right:1px solid var(--hair-strong)}
-  .weekband td{background:var(--ink)!important;color:#fff;font-family:"Spline Sans Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .55rem}
-  .gridkey{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin-top:1.1rem;font-size:.76rem;color:var(--ink-soft)}
-  .gridkey span{display:inline-flex;align-items:center;gap:.4rem}
-  .gridkey i{width:.85rem;height:.85rem;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.08)}
+    .eyebrow {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .75rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem
+    }
 
-  /* ---- schedule table ---- */
-  table.sched{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--hair-strong);border-radius:var(--radius);overflow:hidden}
-  table.sched tr{border-bottom:1px solid var(--hair)}
-  table.sched tr:last-child{border-bottom:none}
-  table.sched th.day{text-align:left;font-family:"Spline Sans Mono",monospace;font-size:.78rem;letter-spacing:.02em;color:var(--indigo);font-weight:500;padding:.8rem 1.1rem;width:78px;white-space:nowrap;vertical-align:top;background:var(--paper-2)}
-  table.sched td{padding:.8rem 1.1rem;vertical-align:top}
-  table.sched td .kind{font-family:"Spline Sans Mono",monospace;font-size:.68rem;letter-spacing:.03em;color:var(--ink-faint);margin-left:.5rem}
-  table.sched td .opt{display:block;font-size:.85rem;color:var(--ink-soft);margin-top:.25rem}
-  table.sched tr.wkrow th{background:var(--ink);color:#fff;font-family:"Spline Sans Mono",monospace;font-weight:500;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;text-align:left;padding:.4rem 1.1rem}
+    .eyebrow .n {
+      color: var(--indigo-bright)
+    }
 
-  footer{padding:3rem 0 4rem;color:var(--ink-faint);font-size:.85rem}
-  footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+    /* ---- hero ---- */
+    header.hero {
+      padding: 4.5rem 0 3.6rem;
+      position: relative;
+      overflow: hidden
+    }
 
-  .verb{border-left:2px solid var(--hair-strong);padding-left:1rem;font-style:italic;color:var(--ink-soft);margin:1rem 0}
+    header.hero .kicker {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--indigo-bright);
+      margin-bottom: 1.4rem
+    }
 
-  @media(max-width:640px){
-    body{font-size:16px}
-    .drow{grid-template-columns:1fr;gap:.3rem}
-    .oqrow{grid-template-columns:auto 1fr;gap:.7rem}
-    .oqrow .tag{grid-column:2}
-    section{padding:2.6rem 0}
-  }
-</style>
+    header.hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      font-weight: 500;
+      letter-spacing: -.015em;
+      max-width: 15ch
+    }
+
+    header.hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--indigo)
+    }
+
+    header.hero .sub {
+      margin-top: 1.5rem;
+      font-size: 1.15rem;
+      color: var(--ink-soft);
+      max-width: 56ch
+    }
+
+    .hero-anim {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .9s cubic-bezier(.2, .7, .2, 1) forwards
+    }
+
+    .hero-anim.d1 {
+      animation-delay: .05s
+    }
+
+    .hero-anim.d2 {
+      animation-delay: .18s
+    }
+
+    .hero-anim.d3 {
+      animation-delay: .3s
+    }
+
+    .hero-anim.d4 {
+      animation-delay: .42s
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .hero-anim {
+        animation: none;
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .metastrip {
+      display: flex;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+      margin-top: 2.6rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--hair-strong)
+    }
+
+    .metastrip .m {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem
+    }
+
+    .metastrip .m .lab {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-faint)
+    }
+
+    .metastrip .m .val {
+      font-size: 1.05rem;
+      font-weight: 500
+    }
+
+    .metastrip .m .val small {
+      font-weight: 400;
+      color: var(--ink-faint)
+    }
+
+    /* ---- how to read (legend) ---- */
+    .legend {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.7rem;
+      margin-top: 2.8rem
+    }
+
+    .legend h3 {
+      font-size: 1.05rem;
+      margin-bottom: .3rem
+    }
+
+    .legend p.note {
+      font-size: .9rem;
+      color: var(--ink-soft);
+      margin: .2rem 0 1.1rem
+    }
+
+    .legend .rows {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .9rem
+    }
+
+    .legend .rows .r {
+      display: flex;
+      gap: .7rem;
+      align-items: flex-start
+    }
+
+    .legend .rows .r .txt {
+      font-size: .85rem;
+      color: var(--ink-soft)
+    }
+
+    .legend .rows .r .txt b {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    /* ---- generic ---- */
+    h2.sec {
+      font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+      font-weight: 500;
+      letter-spacing: -.01em;
+      margin-bottom: .5rem
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 64ch;
+      margin-bottom: 2rem
+    }
+
+    p {
+      margin: 0 0 1rem
+    }
+
+    .prose {
+      max-width: 70ch
+    }
+
+    .prose p {
+      margin: 0 0 1rem
+    }
+
+    /* ---- fact table ---- */
+    .facts {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      overflow: hidden
+    }
+
+    .facts tr {
+      border-bottom: 1px solid var(--hair)
+    }
+
+    .facts tr:last-child {
+      border-bottom: none
+    }
+
+    .facts th {
+      text-align: left;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 500;
+      padding: .85rem 1.1rem;
+      width: 34%;
+      vertical-align: top;
+      background: var(--paper-2)
+    }
+
+    .facts td {
+      padding: .85rem 1.1rem;
+      vertical-align: top
+    }
+
+    .facts td .tag {
+      margin-left: .4rem
+    }
+
+    /* ---- activity cards ---- */
+    .actgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.1rem
+    }
+
+    .actcard {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: relative
+    }
+
+    .actcard .num {
+      font-family: "Fraunces", serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--indigo-bright)
+    }
+
+    .actcard h3 {
+      font-size: 1.28rem;
+      margin: .15rem 0 .7rem
+    }
+
+    .actcard p {
+      font-size: .92rem;
+      color: var(--ink-soft);
+      margin: 0 0 1.1rem;
+      flex: 1
+    }
+
+    .actcard ul {
+      font-size: .92rem;
+      color: var(--ink-soft);
+      margin: 0 0 1.1rem;
+      padding-left: 1.1rem;
+      flex: 1
+    }
+
+    .actcard ul li+li {
+      margin-top: .4rem
+    }
+
+    .actcard .foot {
+      border-top: 1px solid var(--hair);
+      padding-top: .8rem;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .72rem;
+      color: var(--ink-faint);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem
+    }
+
+    /* ---- placeholder block ---- */
+    .placeholder {
+      border: 1.5px dashed var(--hair-strong);
+      border-radius: var(--radius);
+      background: repeating-linear-gradient(45deg, transparent, transparent 11px, rgba(0, 0, 0, .012) 11px, rgba(0, 0, 0, .012) 22px);
+      padding: 2rem 1.8rem
+    }
+
+    .placeholder h3 {
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      flex-wrap: wrap
+    }
+
+    .placeholder p {
+      font-size: .95rem;
+      color: var(--ink-soft);
+      margin: 0 0 .6rem;
+      max-width: 66ch
+    }
+
+    .placeholder ul {
+      margin: .4rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--ink-soft);
+      font-size: .92rem
+    }
+
+    .placeholder li {
+      margin: .3rem 0
+    }
+
+    /* ---- sprint rhythm strip ---- */
+    .rhythm {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem 1.3rem;
+      margin-bottom: 1.8rem;
+      overflow-x: auto
+    }
+
+    .rhythm .weeks {
+      display: flex;
+      gap: 1.3rem;
+      min-width: 760px
+    }
+
+    .rhythm .week {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem
+    }
+
+    .rhythm .week .wlab {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-faint)
+    }
+
+    .rhythm .days {
+      display: flex;
+      gap: .4rem
+    }
+
+    .rhythm .day {
+      flex: 1;
+      border-radius: 8px;
+      padding: .55rem .3rem .5rem;
+      text-align: center;
+      border: 1px solid var(--hair);
+      background: var(--paper-2);
+      position: relative
+    }
+
+    .rhythm .day .dn {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .7rem;
+      color: var(--ink-faint)
+    }
+
+    .rhythm .day .dt {
+      font-size: .72rem;
+      font-weight: 500;
+      margin-top: .2rem;
+      line-height: 1.2
+    }
+
+    .rhythm .day.media {
+      background: #ECEAF4;
+      border-color: #D5D0E6
+    }
+
+    .rhythm .day.media .dt {
+      color: var(--indigo)
+    }
+
+    .rhythm .day.game {
+      background: var(--progress-bg);
+      border-color: #EAD6B4
+    }
+
+    .rhythm .day.game .dt {
+      color: var(--progress)
+    }
+
+    .rhythm .day.project {
+      background: var(--settled-bg);
+      border-color: #C4E2D4
+    }
+
+    .rhythm .day.project .dt {
+      color: var(--settled)
+    }
+
+    .rhythm .day.present {
+      background: var(--open-bg);
+      border-color: #D3CEF3
+    }
+
+    .rhythm .day.present .dt {
+      color: var(--open)
+    }
+
+    .rhythm .rkey {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--hair);
+      font-size: .75rem;
+      color: var(--ink-soft)
+    }
+
+    .rhythm .rkey span {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem
+    }
+
+    .rhythm .rkey i {
+      width: .7rem;
+      height: .7rem;
+      border-radius: 3px;
+      display: inline-block
+    }
+
+    /* ---- day template ---- */
+    .template {
+      background: var(--paper-2);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.6rem;
+      margin-bottom: 1.8rem
+    }
+
+    .template h3 {
+      font-size: 1.15rem;
+      margin-bottom: .3rem
+    }
+
+    .template .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+      align-items: center
+    }
+
+    .template .step {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: 8px;
+      padding: .4rem .7rem;
+      font-size: .82rem
+    }
+
+    .template .step .t {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .64rem;
+      color: var(--ink-faint);
+      display: block
+    }
+
+    .template .arrow {
+      color: var(--ink-faint);
+      font-size: .9rem
+    }
+
+    /* ---- day list ---- */
+    .days-detail {
+      display: grid;
+      gap: .7rem
+    }
+
+    .drow {
+      background: var(--card);
+      border: 1px solid var(--hair);
+      border-radius: 10px;
+      padding: .9rem 1.1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: baseline
+    }
+
+    .drow .badge {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      min-width: 3.4rem;
+      color: var(--indigo-bright)
+    }
+
+    .drow .badge small {
+      display: block;
+      font-family: "Spline Sans Mono", monospace;
+      font-weight: 400;
+      font-size: .6rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink-faint)
+    }
+
+    .drow .body {
+      font-size: .92rem;
+      color: var(--ink-soft)
+    }
+
+    .drow .body b {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    .drow .body .fw {
+      font-style: italic;
+      color: var(--indigo)
+    }
+
+    .wk-divider {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 1.3rem 0 .3rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem
+    }
+
+    .wk-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--hair)
+    }
+
+    /* ---- guide cards grid ---- */
+    .guides {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.1rem
+    }
+
+    .gcard {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.35rem;
+      display: flex;
+      flex-direction: column
+    }
+
+    .gcard.stub {
+      background: transparent;
+      border-style: dashed
+    }
+
+    .gcard h3 {
+      font-size: 1.14rem;
+      margin-bottom: .5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .6rem
+    }
+
+    .gcard p {
+      font-size: .88rem;
+      color: var(--ink-soft);
+      margin: 0
+    }
+
+    .gcard .more {
+      margin-top: .9rem;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .72rem;
+      color: var(--indigo-bright)
+    }
+
+    /* ---- detailed guide (QG etc) ---- */
+    .guidedoc {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 2rem 2.1rem;
+      margin-bottom: 1.4rem
+    }
+
+    .guidedoc>h3 {
+      font-size: 1.5rem;
+      margin-bottom: .4rem
+    }
+
+    .guidedoc .meta {
+      font-size: .9rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.4rem
+    }
+
+    .stage {
+      border-left: 2px solid var(--hair-strong);
+      padding: .1rem 0 .1rem 1.2rem;
+      margin: 1.2rem 0
+    }
+
+    .stage .sh {
+      display: flex;
+      align-items: baseline;
+      gap: .7rem;
+      flex-wrap: wrap;
+      margin-bottom: .35rem
+    }
+
+    .stage .sh h4 {
+      font-size: 1.08rem
+    }
+
+    .stage .sh .dur {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .72rem;
+      color: var(--ink-faint);
+      background: var(--paper-2);
+      padding: .1rem .5rem;
+      border-radius: 100px
+    }
+
+    .stage ol,
+    .stage ul {
+      margin: .3rem 0;
+      padding-left: 1.15rem
+    }
+
+    .stage li {
+      margin: .32rem 0;
+      font-size: .93rem;
+      color: var(--ink-soft)
+    }
+
+    .callout {
+      background: var(--open-bg);
+      border: 1px solid #D3CEF3;
+      border-radius: 10px;
+      padding: .9rem 1.1rem;
+      margin: 1rem 0;
+      font-size: .9rem
+    }
+
+    .callout .h {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--open);
+      margin-bottom: .3rem
+    }
+
+    .callout.prov {
+      background: var(--progress-bg);
+      border-color: #EAD6B4
+    }
+
+    .callout.prov .h {
+      color: var(--progress)
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: .4rem 0 0
+    }
+
+    .chip {
+      background: var(--paper-2);
+      border: 1px solid var(--hair-strong);
+      border-radius: 100px;
+      padding: .3rem .8rem;
+      font-size: .83rem
+    }
+
+    .chip.blank-chip {
+      border-style: dashed;
+      color: var(--ink-faint)
+    }
+
+    /* ---- rubric ---- */
+    .rubric {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.4rem
+    }
+
+    .crit {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.35rem
+    }
+
+    .crit h4 {
+      font-size: 1.15rem;
+      margin-bottom: .15rem
+    }
+
+    .crit .def {
+      font-size: .86rem;
+      color: var(--ink-soft);
+      margin-bottom: .9rem
+    }
+
+    .crit .lvl {
+      display: flex;
+      gap: .6rem;
+      margin: .5rem 0;
+      font-size: .85rem
+    }
+
+    .crit .lvl .n {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .68rem;
+      font-weight: 500;
+      padding: .12em .5em;
+      border-radius: 6px;
+      height: fit-content;
+      white-space: nowrap
+    }
+
+    .crit .lvl.l1 .n {
+      background: var(--blank-bg);
+      color: var(--blank)
+    }
+
+    .crit .lvl.l2 .n {
+      background: var(--progress-bg);
+      color: var(--progress)
+    }
+
+    .crit .lvl.l3 .n {
+      background: var(--settled-bg);
+      color: var(--settled)
+    }
+
+    .crit .lvl .d {
+      color: var(--ink-soft)
+    }
+
+    .quadrant-wrap {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      margin-top: 1.4rem;
+      text-align: center
+    }
+
+    .quadrant-wrap svg {
+      max-width: 640px;
+      width: 100%;
+      height: auto
+    }
+
+    .quadrant-wrap .cap {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .75rem;
+      color: var(--ink-faint);
+      margin-top: .8rem
+    }
+
+    /* ---- project tasks ---- */
+    .bigq {
+      background: var(--indigo);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.6rem
+    }
+
+    .bigq .l {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-bottom: .6rem
+    }
+
+    .bigq p {
+      font-family: "Fraunces", serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      margin: 0;
+      line-height: 1.3
+    }
+
+    .tasks {
+      counter-reset: t;
+      display: grid;
+      gap: .55rem
+    }
+
+    .task {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--hair);
+      border-radius: 10px;
+      padding: .9rem 1.1rem
+    }
+
+    .task::before {
+      counter-increment: t;
+      content: counter(t);
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      color: var(--indigo-bright);
+      font-size: 1.1rem;
+      min-width: 1.4rem
+    }
+
+    .task .body {
+      font-size: .92rem
+    }
+
+    .task .body b {
+      font-weight: 500
+    }
+
+    .task .body .sub {
+      color: var(--ink-soft);
+      display: block;
+      margin-top: .15rem
+    }
+
+    /* ---- open questions ---- */
+    .oq {
+      display: grid;
+      gap: .6rem
+    }
+
+    .oqrow {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: start
+    }
+
+    .oqrow .id {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--open);
+      min-width: 1.5rem
+    }
+
+    .oqrow .q {
+      font-size: .94rem
+    }
+
+    .oqrow .q .ctx {
+      display: block;
+      margin-top: .25rem;
+      font-size: .82rem;
+      color: var(--ink-faint)
+    }
+
+    .oqrow.resolved {
+      opacity: .62
+    }
+
+    .oqrow.resolved .id {
+      color: var(--settled)
+    }
+
+    /* ---- outstanding ---- */
+    .outgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem
+    }
+
+    .outcol h4 {
+      font-size: 1rem;
+      font-family: "Spline Sans", sans-serif;
+      font-weight: 600;
+      margin-bottom: .7rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--hair-strong);
+      display: flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .outcol ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: .45rem
+    }
+
+    .outcol li {
+      font-size: .88rem;
+      color: var(--ink-soft);
+      padding-left: 1.1rem;
+      position: relative
+    }
+
+    .outcol li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .6em;
+      width: .4rem;
+      height: .4rem;
+      border-radius: 50%;
+      background: var(--hair-strong)
+    }
+
+    /* ---- daily structure flow (no times) ---- */
+    .daily {
+      background: var(--paper-2);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.6rem 1.7rem;
+      margin-bottom: 2rem
+    }
+
+    .daily h3 {
+      font-size: 1.2rem;
+      margin-bottom: .35rem
+    }
+
+    .daily>p {
+      font-size: .92rem;
+      color: var(--ink-soft);
+      margin: 0 0 1.1rem;
+      max-width: 70ch
+    }
+
+    .dflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      align-items: stretch
+    }
+
+    .dstep {
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: 9px;
+      padding: .6rem .85rem;
+      font-size: .9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center
+    }
+
+    .dsep {
+      display: flex;
+      align-items: center;
+      color: var(--ink-faint);
+      font-size: 1rem
+    }
+
+    /* ---- daily structure flow (with descriptions) ---- */
+    .dflow2 {
+      display: flex;
+      flex-direction: column;
+      gap: 0
+    }
+
+    .dstep2 {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: 9px;
+      padding: .9rem 1.1rem;
+      margin-bottom: .45rem
+    }
+
+    .dstep2 .dnum {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .78rem;
+      color: var(--indigo-bright);
+      font-weight: 600;
+      flex-shrink: 0;
+      min-width: 1.3rem
+    }
+
+    .dstep2 h4 {
+      font-size: 1rem;
+      margin: 0 0 .25rem
+    }
+
+    .dstep2 p {
+      font-size: .88rem;
+      color: var(--ink-soft);
+      margin: 0
+    }
+
+    .dstep2.placeholder-step {
+      border-style: dashed;
+      background: repeating-linear-gradient(45deg, transparent, transparent 11px, rgba(0, 0, 0, .012) 11px, rgba(0, 0, 0, .012) 22px)
+    }
+
+    .dsep2 {
+      display: flex;
+      justify-content: center;
+      color: var(--ink-faint);
+      font-size: 1rem;
+      margin: -.05rem 0;
+      padding-left: 1.3rem
+    }
+
+    /* ---- sprint grid (faithful to spreadsheet) ---- */
+    .gridscroll {
+      overflow-x: auto;
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      background: var(--card);
+      -webkit-overflow-scrolling: touch
+    }
+
+    table.sprint {
+      border-collapse: collapse;
+      min-width: 1560px;
+      width: 100%;
+      font-size: .8rem
+    }
+
+    table.sprint th,
+    table.sprint td {
+      border: 1px solid var(--hair);
+      vertical-align: top;
+      padding: .5rem .55rem
+    }
+
+    table.sprint thead th {
+      position: sticky;
+      top: 0;
+      background: var(--ink);
+      color: #fff;
+      font-family: "Spline Sans Mono", monospace;
+      font-weight: 500;
+      font-size: .66rem;
+      letter-spacing: .03em;
+      text-align: left;
+      white-space: nowrap;
+      z-index: 2
+    }
+
+    table.sprint thead th:first-child {
+      width: 44px;
+      text-align: center
+    }
+
+    table.sprint td.daynum,
+    table.sprint th.daynum {
+      position: sticky;
+      left: 0;
+      background: var(--paper-2);
+      text-align: center;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--indigo);
+      z-index: 1;
+      width: 44px
+    }
+
+    table.sprint td .ct {
+      font-weight: 500;
+      color: var(--ink);
+      display: block;
+      line-height: 1.3
+    }
+
+    table.sprint td .cs {
+      color: var(--ink-soft);
+      display: block;
+      line-height: 1.3;
+      margin-top: .15rem;
+      font-size: .76rem
+    }
+
+    /* cell tags */
+    .ctag {
+      display: inline-block;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .6rem;
+      letter-spacing: .02em;
+      font-weight: 500;
+      padding: .14em .45em;
+      border-radius: 5px;
+      margin-top: .35rem;
+      background: rgba(35, 32, 40, .07);
+      color: var(--ink-soft);
+      border: 1px solid rgba(35, 32, 40, .09);
+      line-height: 1.3;
+      white-space: normal
+    }
+
+    .ctag .k {
+      color: var(--ink-faint)
+    }
+
+    .cblank {
+      display: inline-block;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .62rem;
+      color: var(--ink-faint);
+      border: 1px dashed var(--hair-strong);
+      border-radius: 5px;
+      padding: .14em .45em;
+      margin-top: .35rem
+    }
+
+    /* session-type cell tints */
+    td.c-media {
+      background: #F3EBDB
+    }
+
+    td.c-game {
+      background: #FADFC9
+    }
+
+    td.c-quest {
+      background: #F7E4EE
+    }
+
+    td.c-ai {
+      background: #E8E1F5
+    }
+
+    td.c-disc {
+      background: #E1EFE0
+    }
+
+    td.c-refl {
+      background: #DFEAF7
+    }
+
+    td.c-proj {
+      background: #D2EAE4
+    }
+
+    td.c-port {
+      background: #ECE6D9
+    }
+
+    /* break spacer columns */
+    table.sprint td.brk {
+      width: 14px;
+      min-width: 14px;
+      max-width: 14px;
+      padding: 0;
+      background: var(--paper);
+      border-top: none;
+      border-bottom: none;
+      border-left: 1px solid var(--hair-strong);
+      border-right: 1px solid var(--hair-strong)
+    }
+
+    table.sprint thead th.brk {
+      width: 14px;
+      min-width: 14px;
+      max-width: 14px;
+      padding: 0;
+      background: var(--paper);
+      color: var(--paper);
+      border-left: 1px solid var(--hair-strong);
+      border-right: 1px solid var(--hair-strong)
+    }
+
+    .weekband td {
+      background: var(--ink) !important;
+      color: #fff;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .66rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: .35rem .55rem
+    }
+
+    .gridkey {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem .9rem;
+      margin-top: 1.1rem;
+      font-size: .76rem;
+      color: var(--ink-soft)
+    }
+
+    .gridkey span {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem
+    }
+
+    .gridkey i {
+      width: .85rem;
+      height: .85rem;
+      border-radius: 3px;
+      display: inline-block;
+      border: 1px solid rgba(0, 0, 0, .08)
+    }
+
+    /* ---- schedule table ---- */
+    table.sched {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      overflow: hidden
+    }
+
+    table.sched tr {
+      border-bottom: 1px solid var(--hair)
+    }
+
+    table.sched tr:last-child {
+      border-bottom: none
+    }
+
+    table.sched th.day {
+      text-align: left;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .78rem;
+      letter-spacing: .02em;
+      color: var(--indigo);
+      font-weight: 500;
+      padding: .8rem 1.1rem;
+      width: 78px;
+      white-space: nowrap;
+      vertical-align: top;
+      background: var(--paper-2)
+    }
+
+    table.sched td {
+      padding: .8rem 1.1rem;
+      vertical-align: top
+    }
+
+    table.sched td .kind {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .68rem;
+      letter-spacing: .03em;
+      color: var(--ink-faint);
+      margin-left: .5rem
+    }
+
+    table.sched td .opt {
+      display: block;
+      font-size: .85rem;
+      color: var(--ink-soft);
+      margin-top: .25rem
+    }
+
+    table.sched tr.wkrow th {
+      background: var(--ink);
+      color: #fff;
+      font-family: "Spline Sans Mono", monospace;
+      font-weight: 500;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: .4rem 1.1rem
+    }
+
+    footer {
+      padding: 3rem 0 4rem;
+      color: var(--ink-faint);
+      font-size: .85rem
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: baseline
+    }
+
+    .verb {
+      border-left: 2px solid var(--hair-strong);
+      padding-left: 1rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin: 1rem 0
+    }
+
+    @media(max-width:640px) {
+      body {
+        font-size: 16px
+      }
+
+      .drow {
+        grid-template-columns: 1fr;
+        gap: .3rem
+      }
+
+      .oqrow {
+        grid-template-columns: auto 1fr;
+        gap: .7rem
+      }
+
+      .oqrow .tag {
+        grid-column: 2
+      }
+
+      section {
+        padding: 2.6rem 0
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="top">
-  <div class="inner">
-    <span class="code">LEA-101</span>
-    <div class="links">
-      <a href="#fundamentals">Fundamentals</a>
-      <a href="#schedule">Talks &amp; games</a>
-      <a href="#activities">Activities</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#sprint">Sprint</a>
-      <a href="#guides">Session guides</a>
-      <a href="#rubric">Question rubric</a>
-      <a href="#project">Project</a>
-      <a href="#outstanding">To-Do</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="kicker hero-anim d1">Instructor Guide · Atria University</div>
-    <h1 class="hero-anim d2">Critical Thinking <em>in the Age of AI</em></h1>
-    <p class="sub hero-anim d3">This document is a shared reference for the teaching team of the Critical Thinking in the Age of AI sprint. It describes the course objectives, 15-day sprint plan and methodology that we will follow to conduct different sprint sessions. This is currently a work-in-progress; questions and suggestions are welcome.</p>
-
-    <div class="metastrip hero-anim d4">
-      <div class="m"><span class="lab">Course code</span><span class="val mono">LEA-101</span></div>
-      <div class="m"><span class="lab">Format</span><span class="val">15-day sprint</span></div>
-      <div class="m"><span class="lab">Cohort</span><span class="val">~150 <small>· sections of ~50</small></span></div>
-      <div class="m"><span class="lab">Instructors</span><span class="val">Varsha · Praphul · Meha</span></div>
-    </div>
-  </div>
-</header>
-
-<!-- ============ FUNDAMENTALS ============ -->
-<section id="fundamentals">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">01</span> Fundamentals</div>
-    <table class="facts">
-      <tr><th>Course title</th><td>Critical Thinking in the Age of AI</td></tr>
-      <tr><th>Course code</th><td class="mono">LEA-101</td></tr>
-      <tr><th>Instructors</th><td>Varsha, Praphul, Meha</td></tr>
-      <tr><th>Expected number of students</th><td>~150</td></tr>
-      <tr><th>Cohort structure</th><td>Parallel sections of ~50 students each</td></tr>
-      <tr><th>Sprint dates</th><td>3–21 August</td></tr>
-      <tr><th>Room assignment</th><td>Who runs which room is not yet decided <span class="tag open">Open</span></td></tr>
-      <tr><th>Assessment &amp; grading</th><td>No grading scheme registered <span class="tag open">Open</span></td></tr>
-    </table>
-
-  </div>
-</section>
-
-<!-- ============ SCHEDULE ============ -->
-<section id="schedule">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">02</span> Talks &amp; games</div>
-    <h2 class="sec">Tentative ordering <span class="tag progress" style="vertical-align:middle">In progress</span></h2>
-    <p class="lead">A working sequence of the stimulus for each day. Some slots are still being chosen between options.</p>
-
-    <table class="sched">
-      <tr class="wkrow"><th colspan="2">Week 1</th></tr>
-      <tr><th class="day">Day 2</th><td>Why we make bad decisions <span class="kind">TED talk</span></td></tr>
-      <tr><th class="day">Day 3</th><td>The surprising science of happiness <span class="kind">TED talk</span></td></tr>
-      <tr><th class="day">Day 4</th><td>Trust game or Prisoner's Dilemma game <span class="tag open">Open</span><span class="opt">Choosing between the two.</span></td></tr>
-      <tr><th class="day">Day 5</th><td>TED talk — undecided <span class="tag open">Open</span><span class="opt">"Humans are actually kind" or "Progress is not a zero-sum game".</span></td></tr>
-
-      <tr class="wkrow"><th colspan="2">Week 2</th></tr>
-      <tr><th class="day">Day 6</th><td>When Ideas have Sex <span class="kind">TED talk</span></td></tr>
-      <tr><th class="day">Day 7</th><td>Dangerous Memes <span class="kind">TED talk</span></td></tr>
-      <tr><th class="day">Day 8</th><td>Tragedy of the Commons <span class="kind">game</span><span class="opt">With a supporting TED-Ed talk.</span></td></tr>
-      <tr><th class="day">Day 9</th><td>Game day — not yet assigned <span class="tag open">Open</span><span class="opt">The sprint plan runs a game on day 9; no game chosen yet.</span></td></tr>
-
-      <tr class="wkrow"><th colspan="2">Week 3</th></tr>
-      <tr><th class="day">Day 11</th><td>Image ReGen; The era of blind faith in big data must end</td></tr>
-      <tr><th class="day">Day 12</th><td>Will AI make humans useless? <span class="kind">TED talk</span></td></tr>
-      <tr><th class="day">Day 13</th><td>Undecided <span class="tag open">Open</span></td></tr>
-    </table>
-  </div>
-</section>
-
-<!-- ============ ACTIVITIES ============ -->
-<section id="activities">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">03</span> Course activities</div>
-    <p class="lead">These are the four settings in which students practise critical thinking. Each is a high-level descriptor of what students do — the operational detail (framework variants, fishbowl protocols, and so on) sits in the session guides below.</p>
-
-    <div class="actgrid">
-      <div class="actcard">
-        <span class="num">01</span>
-        <h3>Question Generation</h3>
-        <p>Students ask questions that are articulate, open-ended, generative and have metacognitive depth.</p>
-      </div>
-      <div class="actcard">
-        <span class="num">02</span>
-        <h3>Research</h3>
-        <p>Students commit to a provisional position on a question, then explore online sources to gather and weigh evidence (statistics, case studies and personal anecdotes) both supporting and challenging their chosen position.</p>
-      </div>
-      <div class="actcard">
-        <span class="num">03</span>
-        <h3>Discussion</h3>
-        <p>Students explain and support their positions with evidence, and engage across different perspectives, while observing shared norms of discussion.</p>
-      </div>
-      <div class="actcard">
-        <span class="num">04</span>
-        <h3>Reflection</h3>
-        <p>Students reflect on course content, questions and discussions in personally meaningful ways.<br><br>Students revisit their provisional position against the alternatives raised, naming what has changed in their own thinking.</p>
+  <nav class="top">
+    <div class="inner">
+      <span class="code">LEA-101</span>
+      <div class="links">
+        <a href="#fundamentals">Fundamentals</a>
+        <a href="#schedule">Talks &amp; games</a>
+        <a href="#frameworks">Frameworks</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#sprint">Sprint</a>
+        <a href="#guides">Session guides</a>
+        <a href="#rubric">Question rubric</a>
+        <a href="#project">Project</a>
+        <a href="#outstanding">To-Do</a>
       </div>
     </div>
+  </nav>
 
-  </div>
-</section>
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker hero-anim d1">Instructor Guide · Atria University</div>
+      <h1 class="hero-anim d2">Critical Thinking <em>in the Age of AI</em></h1>
+      <p class="sub hero-anim d3">This document is a shared reference for the teaching team of the Critical Thinking in
+        the Age of AI sprint. It describes the course objectives, 15-day sprint plan and methodology that we will follow
+        to conduct different sprint sessions. This is currently a work-in-progress.</p>
 
-<!-- ============ OUTCOMES (placeholder) ============ -->
-<section id="outcomes">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">04</span> Critical thinking outcomes</div>
-    <h2 class="sec">Course outcomes</h2>
-
-    <div class="placeholder">
-      <h3>Outcomes list to be written <span class="tag progress">In progress</span></h3>
-      <p>Observable outcome statements have not yet been written. They will be authored at the end, then <b>tagged to activities</b> — many-to-many, since one outcome (for example, identifying an unstated assumption) will appear across several activities rather than belonging to one.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SPRINT ============ -->
-<section id="sprint">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">05</span> The 15-day sprint</div>
-    <h2 class="sec">The rhythm of the sprint</h2>
-    <p class="lead">Three weeks of five teaching days. Most days move through the same sequence of sessions — worth reading once before the full plan, so the table below can be scanned for what changes day to day.</p>
-
-    <div class="daily">
-      <h3>The daily sequence</h3>
-      <p>On TED talk days and game days alike, a day runs through these sessions in order. Game days open with a game and its debrief in place of the talk; everything after is shared.</p>
-      <div class="dflow">
-        <span class="dstep">Media / Game</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Question Generation</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Commit to Initial Positions</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Self-Directed Research</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Revise Positions</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Discussion (Small Group / Fishbowl)</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Full Class Discussion</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Written Reflections</span>
-        <span class="dsep">→</span>
-        <span class="dstep">Digital Portfolio &amp; Office Hours</span>
+      <div class="metastrip hero-anim d4">
+        <div class="m"><span class="lab">Course code</span><span class="val mono">LEA-101</span></div>
+        <div class="m"><span class="lab">Format</span><span class="val">15-day sprint</span></div>
+        <div class="m"><span class="lab">Cohort</span><span class="val">~150 <small>· sections of ~50</small></span>
+        </div>
+        <div class="m"><span class="lab">Instructors</span><span class="val">Varsha · Praphul · Meha</span></div>
       </div>
     </div>
+  </header>
 
-    <h3 style="font-size:1.3rem;margin:2rem 0 .4rem">The 15-day plan</h3>
-    <p style="font-size:.9rem;color:var(--ink-soft);margin:0 0 1.1rem;max-width:68ch">The full schedule, one row per day. Cells are tinted by session type. Where a session introduces or practises a named framework, where a full-class discussion plays a specific role, or where project work is individual or in groups, it appears as a tag inside the cell. Gaps mark the morning break and lunch.</p>
+  <!-- ============ FUNDAMENTALS ============ -->
+  <section id="fundamentals">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">01</span> Fundamentals</div>
+      <table class="facts">
+        <tr>
+          <th>Course title</th>
+          <td>Critical Thinking in the Age of AI</td>
+        </tr>
+        <tr>
+          <th>Course code</th>
+          <td class="mono">LEA-101</td>
+        </tr>
+        <tr>
+          <th>Instructors</th>
+          <td>Varsha, Praphul, Meha</td>
+        </tr>
+        <tr>
+          <th>Expected number of students</th>
+          <td>~150</td>
+        </tr>
+        <tr>
+          <th>Cohort structure</th>
+          <td>Parallel sections of ~50 students each</td>
+        </tr>
+        <tr>
+          <th>Sprint dates</th>
+          <td>3–21 August</td>
+        </tr>
+        <tr>
+          <th>Room assignment</th>
+          <td>Who runs which room is not yet decided <span class="tag open">Open</span></td>
+        </tr>
+        <tr>
+          <th>Assessment</th>
+          <td>Formative Assessment (40%): Participation Credit & Digital Portfolio<br /> Project (40%): <a
+              href="#project">The Belief Audit</a><br /> Summative Assessment (20%): Written Exam</td>
+        </tr>
+      </table>
 
-    <div class="gridscroll">
-      <table class="sprint">
-        <thead>
-          <tr>
-            <th class="daynum">Day</th>
-            <th>8.30–9.15</th>
-            <th>9.15–10.00</th>
-            <th class="brk">·</th>
-            <th>10.15–11.00</th>
-            <th>11.00–11.45</th>
-            <th>11.45–12.30</th>
-            <th class="brk">·</th>
-            <th>1.30–2.30</th>
-            <th>2.30–3.00</th>
-            <th>3.00–3.30</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="weekband"><td class="daynum" style="background:var(--ink)">W1</td><td colspan="10">Week 1 · 3–7 August</td></tr>
-          <!-- Day 1 -->
-          <tr>
-            <td class="daynum">1</td>
-            <td class="c-media"><span class="ct">Course Introduction</span></td>
-            <td class="c-media"><span class="ct">TED Talk or some media</span></td>
-            <td class="brk"></td>
-            <td class="c-quest"><span class="ct">Introduction to Question Generation</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="ctag"><span class="k">Framework:</span> 5W1H, phrases</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Full Class Discussion</span><span class="ctag"><span class="k">Introduce:</span> Positions</span></td>
-            <td class="c-refl"><span class="ct">Intention Setting &amp; Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Creating a Digital Portfolio</span></td>
-          </tr>
-          <!-- Day 2 -->
-          <tr>
-            <td class="daynum">2</td>
-            <td class="c-media"><span class="ct">TED Talk</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="ctag"><span class="k">Framework:</span> Assumptions &amp; Consequences / So What?</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span><span class="cs">Demo session</span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Full Class Discussion</span><span class="ctag"><span class="k">Discuss:</span> Initial Positions &amp; Revision</span><span class="ctag"><span class="k">Introduce:</span> Discussion Norms</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 3 -->
-          <tr>
-            <td class="daynum">3</td>
-            <td class="c-media"><span class="ct">TED Talk</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="ctag"><span class="k">Framework:</span> Questioning Circles</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Fishbowl Discussion</span><span class="ctag"><span class="k">Framework:</span> Discussion Norms</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Fishbowl Discussion</span><span class="ctag"><span class="k">Framework:</span> Discussion Norms</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 4 -->
-          <tr>
-            <td class="daynum">4</td>
-            <td class="c-game"><span class="ct">Game</span></td>
-            <td class="c-game"><span class="ct">Debrief &amp; Further Resources</span></td>
-            <td class="brk"></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="cs">Commit to Initial Positions</span><span class="cblank">framework — blank</span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Full Class Discussion</span><span class="ctag"><span class="k">Discuss:</span> Initial Positions &amp; Revision</span><span class="ctag"><span class="k">Discuss:</span> Discussion Norms</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 5 -->
-          <tr>
-            <td class="daynum">5</td>
-            <td class="c-media"><span class="ct">TED Talk</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="ctag"><span class="k">Framework:</span> Perspective Taking</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-refl"><span class="ct">What did we learn this week?</span></td>
-            <td class="c-refl"><span class="ct">What did we learn this week?</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-          </tr>
+    </div>
+  </section>
 
-          <tr class="weekband"><td class="daynum" style="background:var(--ink)">W2</td><td colspan="10">Week 2 · 10–14 August</td></tr>
-          <!-- Day 6 -->
-          <tr>
-            <td class="daynum">6</td>
-            <td class="c-game"><span class="ct">Game</span></td>
-            <td class="c-game"><span class="ct">Debrief &amp; Further Resources</span></td>
-            <td class="brk"></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="cs">Commit to Initial Positions</span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Full Class Discussion</span><span class="ctag"><span class="k">Introduce:</span> Cognitive Biases</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 7 -->
-          <tr>
-            <td class="daynum">7</td>
-            <td class="c-media"><span class="ct">TED Talk</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Fishbowl Discussion</span><span class="ctag"><span class="k">Framework:</span> Cognitive Biases</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Fishbowl Discussion</span><span class="ctag"><span class="k">Framework:</span> Cognitive Biases</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 8 -->
-          <tr>
-            <td class="daynum">8</td>
-            <td class="c-media"><span class="ct">TED Talk</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Full Class Discussion</span><span class="ctag"><span class="k">Discuss:</span> Cognitive Biases</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 9 -->
-          <tr>
-            <td class="daynum">9</td>
-            <td class="c-game"><span class="ct">Game</span></td>
-            <td class="c-game"><span class="ct">Debrief &amp; Further Resources</span></td>
-            <td class="brk"></td>
-            <td class="c-quest"><span class="ct">Question Generation</span><span class="cs">Commit to Initial Positions</span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion in Small Groups</span></td>
-            <td class="brk"></td>
-            <td class="c-refl"><span class="ct">What did we learn this week?</span></td>
-            <td class="c-refl"><span class="ct">What did we learn this week?</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-          </tr>
-          <!-- Day 10 -->
-          <tr>
-            <td class="daynum">10</td>
-            <td class="c-proj"><span class="ct">Revisit questions, group discussions and reflections</span><span class="ctag"><span class="k">Individual</span></span></td>
-            <td class="c-proj"><span class="ct">Revisit questions, group discussions and reflections</span></td>
-            <td class="brk"></td>
-            <td class="c-proj"><span class="ct">Identify the "belief" to audit with peer feedback</span><span class="ctag"><span class="k">Small Groups</span></span></td>
-            <td class="c-proj"><span class="ct">Identify the "belief" to audit with peer feedback</span></td>
-            <td class="c-proj"><span class="ct">Identify the "belief" to audit with peer feedback</span></td>
-            <td class="brk"></td>
-            <td class="c-proj"><span class="ct">Document and submit the chosen "belief statement"</span><span class="ctag"><span class="k">Individual</span></span></td>
-            <td class="c-game"><span class="ct">Feedback &amp; Media Selection for Next Week</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
+  <section id="description">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">03</span> How the course works</div>
+      <p class="lead">
+        A carefully selected list of TED talks and games forms the "content" of this course. We do not expect students to learn or reproduce this content; rather, the TED talks and games are meant to <b>spark inquiry and discussion</b>. All sprint days (except project days) look like this:
+      </p>
 
-          <tr class="weekband"><td class="daynum" style="background:var(--ink)">W3</td><td colspan="10">Week 3 · 17–21 August</td></tr>
-          <!-- Day 11 -->
-          <tr>
-            <td class="daynum">11</td>
-            <td class="c-media"><span class="ct">Student Choice of Media</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion</span><span class="cblank">based on chosen media — blank</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Discussion</span><span class="cblank">based on chosen media — blank</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 12 -->
-          <tr>
-            <td class="daynum">12</td>
-            <td class="c-media"><span class="ct">Student Choice of Media</span></td>
-            <td class="c-quest"><span class="ct">Question Generation</span></td>
-            <td class="brk"></td>
-            <td class="c-ai"><span class="ct"><b>Commit to Initial Positions</b>, <b>Self-Directed Research with AI</b></span></td>
-            <td class="c-ai"><span class="ct">Self-Directed Research with AI</span><span class="cs">Revise Positions (if applicable)</span></td>
-            <td class="c-disc"><span class="ct">Discussion</span><span class="cblank">based on chosen media — blank</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Discussion</span><span class="cblank">based on chosen media — blank</span></td>
-            <td class="c-refl"><span class="ct">Written Reflections</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 13 -->
-          <tr>
-            <td class="daynum">13</td>
-            <td class="c-proj"><span class="ct">Research counter-arguments</span><span class="ctag"><span class="k">Individual</span></span></td>
-            <td class="c-proj"><span class="ct">Research counter-arguments</span></td>
-            <td class="brk"></td>
-            <td class="c-proj"><span class="ct">Research counter-arguments</span></td>
-            <td class="c-proj"><span class="ct">Research counter-arguments</span></td>
-            <td class="c-proj"><span class="ct">Document and evaluate counter-arguments</span><span class="ctag"><span class="k">Individual</span></span></td>
-            <td class="brk"></td>
-            <td class="c-proj"><span class="ct">Document and evaluate counter-arguments</span></td>
-            <td class="c-proj"><span class="ct">Document and evaluate counter-arguments</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio Feedback &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 14 -->
-          <tr>
-            <td class="daynum">14</td>
-            <td class="c-proj"><span class="ct">Create "steelman"</span><span class="ctag"><span class="k">Individual</span></span></td>
-            <td class="c-proj"><span class="ct">Create "steelman"</span></td>
-            <td class="brk"></td>
-            <td class="c-proj"><span class="ct">Present and critique "steelman"</span><span class="ctag"><span class="k">Small Groups</span></span></td>
-            <td class="c-proj"><span class="ct">Present and critique "steelman"</span></td>
-            <td class="c-proj"><span class="ct">Present and critique "steelman"</span></td>
-            <td class="brk"></td>
-            <td class="c-proj"><span class="ct">Document and submit the chosen "steelman"</span><span class="ctag"><span class="k">Individual</span></span></td>
-            <td class="c-proj"><span class="ct">Document and submit the chosen "steelman"</span></td>
-            <td class="c-port"><span class="ct">Digital Portfolio Feedback &amp; Office Hours</span></td>
-          </tr>
-          <!-- Day 15 -->
-          <tr>
-            <td class="daynum">15</td>
-            <td class="c-proj"><span class="ct">Prepare to present</span></td>
-            <td class="c-proj"><span class="ct">Prepare to present</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Project Presentations</span></td>
-            <td class="c-disc"><span class="ct">Project Presentations</span></td>
-            <td class="c-disc"><span class="ct">Project Presentations</span></td>
-            <td class="brk"></td>
-            <td class="c-disc"><span class="ct">Project Presentations</span></td>
-            <td class="c-disc"><span class="ct">Project Presentations</span></td>
-            <td class="c-disc"><span class="ct">Project Presentations</span></td>
-          </tr>
-        </tbody>
+      <div class="dflow2">
+        <div class="dstep2">
+          <span class="dnum">01</span>
+          <div>
+            <h4>TED Talk / Game (45 - 90 mins)</h4>
+            <p>Students watch the TED talk, or participate in the game. They can take notes if they wish to, or in the case of the talk, watch it more than once. Supplementary material might be provided for students to explore before the next activity.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2">
+          <span class="dnum">01</span>
+          <div>
+            <h4>Question Generation (45 mins)</h4>
+            <p>Students work individually at first, and then in small groups, to come up with their own questions to ask, in response to the TED talk or game.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2">
+          <span class="dnum">02</span>
+          <div>
+            <h4>Question Curation by Instructors (30 mins - break for students)</h4>
+            <p>Instructors curate the questions submitted by students, and create a list of 5-6 shared questions for the cohort.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2">
+          <span class="dnum">03</span>
+          <div>
+            <h4>Self-Directed Research (45 - 90 mins)</h4>
+            <p>Students research the curated list of 5-6 questions, in order to come up with their answers, and find supporting evidence. Given the open-ended nature of questions students are encouraged to ask, it is very unlikely that a group of students will approach their answer in the same way.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2">
+          <span class="dnum">04</span>
+          <div>
+            <h4>Discussion in Small Groups (45 mins)</h4>
+            <p>Students meet in the Upper Deck (an outdoor seating area) and discuss each question within their small groups. Instructors circulate and observe, joining groups from time to time in order to provide support or pose follow-up questions.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2">
+          <span class="dnum">05</span>
+          <div>
+            <h4>Full Class Discussion (45 mins)</h4>
+            <p>An instructor-led conversation with the full class in order to surface different perspectives, elevate interesting conversations from the small-group discussions, reflect on participation and discussion quality and introduce guiding frameworks for the next day.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2">
+          <span class="dnum">06</span>
+          <div>
+            <h4>Written Reflection (30 mins)</h4>
+            <p>Each student engages in open-ended reflection about the day, writing down anything that is on top of their minds. Usually, students tend to reflect on their evolving understanding of the content itself, or what happened in their group discussions.</p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2 placeholder-step">
+          <span class="dnum">07</span>
+          <div>
+            <h4>Digital Portfolio <span class="tag progress">Description pending</span></h4>
+            <p></p>
+          </div>
+        </div>
+        <div class="dsep2">↓</div>
+        <div class="dstep2 placeholder-step">
+          <span class="dnum">08</span>
+          <div>
+            <h4>Office Hours <span class="tag progress">Description pending</span></h4>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCHEDULE ============ -->
+  <section id="schedule">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">02</span> Talks &amp; games</div>
+
+      <table class="sched">
+        <tr class="wkrow">
+          <th colspan="2">Week 1</th>
+        </tr>
+        <tr>
+          <th class="day">Day 1</th>
+          <td><a href="https://www.ted.com/talks/dan_gilbert_why_we_make_bad_decisions">Why we make bad decisions</a>
+            <span class="kind">TED Talk</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 2</th>
+          <td><a href="https://www.ted.com/talks/dan_gilbert_the_surprising_science_of_happiness">The surprising science
+              of happiness</a> <span class="kind">TED Talk</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 3</th>
+          <td><a href="https://ncase.me/trust/">The Evolution of Trust</a> <span class="kind">Game</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 4</th>
+          <td><a href="https://www.ted.com/talks/robert_wright_the_evolution_of_compassion">The evolution of
+              compassion</a> <span class="kind">TED Talk</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 5</th>
+          <td><a href="https://www.ted.com/talks/matt_ridley_when_ideas_have_sex">When ideas have sex</a> <span
+              class="kind">TED Talk</span></td>
+        </tr>
+
+        <tr class="wkrow">
+          <th colspan="2">Week 2</th>
+        </tr>
+        <tr>
+          <th class="day">Day 6</th>
+          <td><a href="https://psims.games/">Tragedy of the Commons</a> <span class="kind">Game</span><span
+              class="opt"><a href="https://www.youtube.com/watch?v=CxC161GvMPc">What is the Tragedy of the
+                Commons?</a> <span class="kind">TED Ed</span></span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 7</th>
+          <td><a href="https://www.ted.com/talks/dan_dennett_dangerous_memes">Dangerous memes</a> <span class="kind">TED
+              Talk</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 8</th>
+          <td><a
+              href="https://www.ted.com/talks/zeynep_tufekci_we_re_building_a_dystopia_just_to_make_people_click_on_ads">We're
+              building a dystopia just to make people click on ads</a> <span class="kind">TED Talk</span></td>
+        </tr>
+        <tr>
+          <th class="day">Days 9-10</th>
+          <td><span class="kind">Project Day</span></td>
+        </tr>
+
+        <tr class="wkrow">
+          <th colspan="2">Week 3</th>
+        </tr>
+        <tr>
+          <th class="day">Day 11</th>
+          <td>Image ReGen <span class="kind">Game</span><span class="opt">With supporting video</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 12</th>
+          <td><a href="https://www.ted.com/talks/akram_awad_will_ai_make_humans_useless">Will AI make humans
+              useless?</a> <span class="kind">TED Talk</span></td>
+        </tr>
+        <tr>
+          <th class="day">Day 13</th>
+          <td>Student Choice (or) TBD</td>
+        </tr>
+        <tr>
+          <th class="day">Days 14-15</th>
+          <td><span class="kind">Project Day</span></td>
+        </tr>
       </table>
     </div>
+  </section>
 
-    <div class="gridkey">
-      <span><i style="background:#F3EBDB"></i> Media (TED Talk / Student Choice)</span>
-      <span><i style="background:#FADFC9"></i> Game &amp; Debrief</span>
-      <span><i style="background:#F7E4EE"></i> Question Generation</span>
-      <span><i style="background:#E8E1F5"></i> Self-Directed Research with AI</span>
-      <span><i style="background:#E1EFE0"></i> Discussion (Small Group / Fishbowl / Full Class)</span>
-      <span><i style="background:#DFEAF7"></i> Written Reflections</span>
-      <span><i style="background:#D2EAE4"></i> Project</span>
-      <span><i style="background:#ECE6D9"></i> Digital Portfolio &amp; Office Hours</span>
+  <!-- ============ OUTCOMES ============ -->
+  <section id="outcomes">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">04</span> Course outcomes</div>
+      <p class="lead">These course outcome statements represent what students should be able to do through each course activity.</p>
+
+      <div class="actgrid">
+        <div class="actcard">
+          <span class="num">01</span>
+          <h3>Question Generation</h3>
+          <ul>
+            <li>ask questions that are articulate, open-ended, generative and have metacognitive depth</li>
+          </ul>
+        </div>
+        <div class="actcard">
+          <span class="num">02</span>
+          <h3>Research</h3>
+          <ul>
+            <li>choose a position, in response to a question</li>
+            <li>gather evidence to support a position</li>
+            <li>judge the quality of different kinds of evidence</li>
+          </ul>
+        </div>
+        <div class="actcard">
+          <span class="num">03</span>
+          <h3>Discussion</h3>
+          <ul>
+            <li>observe shared norms of discussion</li>
+            <li>explain and reason about a chosen position</li>
+            <li>support a position with evidence</li>
+            <li>judge the quality of an argument</li>
+            <li>engage respectfully across different perspectives</li>
+          </ul>
+        </div>
+        <div class="actcard">
+          <span class="num">04</span>
+          <h3>Reflection</h3>
+          <ul>
+            <li>reflect on learning, course content, questions generated and discussions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="placeholder" style="margin-top:1.6rem">
+        <h3>Mapping to Critical Thinking capacities <span class="tag open">Open</span></h3>
+        <p>These outcome statements will eventually be mapped to the Critical Thinking capacities from literature.</p>
+      </div>
     </div>
-    <p style="font-size:.78rem;color:var(--ink-faint);margin-top:.9rem">Weekends fall between the weeks. Blank cells mark slots left to be filled: the day-4 Question Generation framework, and the days 11–12 discussion sessions that depend on the media students choose.</p>
-  </div>
-</section>
+  </section>
 
-<!-- ============ SESSION GUIDES ============ -->
-<section id="guides">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">06</span> Session guides</div>
-    <h2 class="sec">How each session runs</h2>
-    <p class="lead">Detailed guides exist for some session types. Others are named in the plan but not yet written — those are listed as stubs at the end so nothing is lost.</p>
+  <!-- ============ FRAMEWORKS ============ -->
+  <section id="frameworks">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">02.5</span> Frameworks</div>
+      <p class="lead">Question Generation frameworks help students ideate more broadly when writing questions.
+        Discussion frameworks shape the norms and quality of the small-group discussions. Both are introduced
+        incrementally over the course.</p>
 
-    <!-- QG full guide -->
-    <div class="guidedoc" id="guide-qg">
-      <h3>Question Generation</h3>
-      <p class="meta">Maps to the Question Generation activity · 45–60 minutes · follows every TED talk and game.</p>
-      <p class="prose">A Question Generation activity follows every TED talk and game. Students work individually and then in groups to generate interesting, open-ended questions that will lead to meaningful discussion. The talk or game is a stimulus; questions need not focus solely on it — those connecting the stimulus to the real world, or to students' own lived experiences, tend to produce more engaging discussions.</p>
+      <h3 style="font-size:1.2rem;margin:2rem 0 1rem">Question Generation frameworks</h3>
+      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem">P.S. Developed primarily for TED talks. Would they also work for games? <span class="tag open">Open</span></p>
 
-      <div class="stage">
-        <div class="sh"><h4>Prep — before the session</h4></div>
-        <ul>
-          <li>Decide the framework of the day and have 1–2 examples ready that are <em>not</em> drawn from the talk's topic.</li>
-          <li>Confirm the Google Form for question submission is created and shared on LearnX.</li>
-          <li>Check that students are seated in their groups, and that each group has a device-free space to write.</li>
-          <li>Have the stimulus (talk or game) ready to reference, and be prepared to remind students to put devices away.</li>
-        </ul>
+      <div class="guides">
+        <div class="gcard">
+          <h3>5W1H</h3>
+          <p>Question starters — What, Who, When, Where, How — to help with blank-canvas syndrome. Can you write
+            questions that begin with each of these starters?</p>
+        </div>
+        <div class="gcard">
+          <h3>"Connection" words</h3>
+          <p>Words or phrases that connect the TED talk or game to current events or systems in the world, to spark connections.</p>
+        </div>
+        <div class="gcard">
+          <h3>Assumptions and Consequences</h3>
+          <p>What assumptions does the speaker make? What are the consequences if the speaker is right — what
+            happens in the real world, and who or what does it influence?</p>
+        </div>
+        <div class="gcard">
+          <h3>So What?</h3>
+          <p>Assume the speaker is right about everything. So what — why should you or I care? If it doesn't
+            affect either of us, who would care? Keep asking "so what" until the question feels interesting or
+            important.</p>
+        </div>
+        <div class="gcard">
+          <h3>Perspective Taking</h3>
+          <p>Take the perspective of a friend or family member, of people in different professions (a doctor, a
+            migrant labourer, a lawyer, a business owner), or of people in different places or communities. What
+            would they say about this talk?</p>
+        </div>
+        <div class="gcard">
+          <h3>Questioning Circles</h3>
+          <p>Three domains questions can draw from: <br/>
+            <b>You</b> (personal experience), <b>the Talk</b> (what the speaker says), and <b>the World</b> (the real world, or another talk). <br/>Combine at least two — e.g. You + Talk: "If you were in the speaker's position, would you have reached the same conclusion?" All three can also be combined at once.</p>
+        </div>
       </div>
 
-      <div class="stage">
-        <div class="sh"><h4>Individual Question Generation</h4><span class="dur">20 min</span></div>
-        <ol>
-          <li>Ask students to put away all devices, including phones. Questions should be authentic and channel students' own curiosity.</li>
-          <li>Students may start writing in their notebooks whenever ready. Remind them to write legibly — peers will read their questions.</li>
-          <li>Some will start immediately; others may be blank. This is normal — let them sit with the discomfort for at least 5 minutes.</li>
-          <li>When most of the class has written what first occurs to them, introduce the framework of the day (below), in under 5 minutes.</li>
-          <li>Describe the framework briefly, with 1–2 examples not drawn from the talk's topic. Allow ~10 more minutes of individual writing.</li>
-        </ol>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Silent Reading in Groups</h4><span class="dur">5 min</span></div>
-        <ol>
-          <li>Students pass notebooks around and silently read peers' questions. They may vote on favourites or make small phrasing edits.</li>
-          <li>Maintain silence so students focus on reading.</li>
-          <li>Ends when every student has read every other student's questions in their group.</li>
-        </ol>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Group Discussion</h4><span class="dur">20 min</span></div>
-        <ol>
-          <li>Once silent reading is mostly done, groups may discuss.</li>
-          <li>Goal: identify the 4 most interesting questions in the group. They may rephrase, aggregate similar questions, or write new ones that emerge.</li>
-          <li>Remind students not to start answering questions or defending positions. Redirect as often as needed — the task is selecting 4 questions.</li>
-        </ol>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Question Submission</h4><span class="dur">5 min</span></div>
-        <ol>
-          <li>Ensure the Google Form is already shared on LearnX.</li>
-          <li>One student per group uses a device to submit a single form with all 4 selected questions.</li>
-        </ol>
-      </div>
-
-      <h4 style="font-size:1.1rem;margin:1.6rem 0 .3rem">Question Generation frameworks</h4>
-      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:.6rem">Introduced incrementally over the sprint to help students ideate more broadly.</p>
+      <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Discussion frameworks <span class="tag progress">In Progress</span>
+      </h3>
+      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem">Named, but how each one works is still to be figured out. </p>
       <div class="chips">
-        <span class="chip">5W1H</span>
-        <span class="chip">"Connection" words</span>
-        <span class="chip">Assumptions and Consequences</span>
-        <span class="chip">So What?</span>
-        <span class="chip">Perspective Taking</span>
-        <span class="chip">Questioning Circles</span>
+        <span class="chip blank-chip">Discussion Norms</span>
+        <span class="chip blank-chip">Ladder of Inference</span>
+        <span class="chip blank-chip">Cognitive Biases</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SESSION GUIDES ============ -->
+  <section id="guides">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">06</span> Session guides</div>
+      <h2 class="sec">How each session runs</h2>
+      <p class="lead">Detailed guides exist for some session types. Others are named in the plan but not yet written —
+        those are listed as stubs at the end so nothing is lost.</p>
+
+      <!-- QG full guide -->
+      <div class="guidedoc" id="guide-qg">
+        <h3>Question Generation</h3>
+        <p class="meta">Maps to the Question Generation activity · 45–60 minutes · follows every TED talk and game.</p>
+        <p class="prose">A Question Generation activity follows every TED talk and game. Students work individually and
+          then in groups to generate interesting, open-ended questions that will lead to meaningful discussion. The talk
+          or game is a stimulus; questions need not focus solely on it — those connecting the stimulus to the real
+          world, or to students' own lived experiences, tend to produce more engaging discussions.</p>
+
+        <div class="stage">
+          <div class="sh">
+            <h4>Prep — before the session</h4>
+          </div>
+          <ul>
+            <li>Decide the framework of the day and have 1–2 examples ready that are <em>not</em> drawn from the talk's
+              topic.</li>
+            <li>Confirm the Google Form for question submission is created and shared on LearnX.</li>
+            <li>Check that students are seated in their groups, and that each group has a device-free space to write.
+            </li>
+            <li>Have the stimulus (talk or game) ready to reference, and be prepared to remind students to put devices
+              away.</li>
+          </ul>
+        </div>
+
+        <div class="stage">
+          <div class="sh">
+            <h4>Individual Question Generation</h4><span class="dur">20 min</span>
+          </div>
+          <ol>
+            <li>Ask students to put away all devices, including phones. Questions should be authentic and channel
+              students' own curiosity.</li>
+            <li>Students may start writing in their notebooks whenever ready. Remind them to write legibly — peers will
+              read their questions.</li>
+            <li>Some will start immediately; others may be blank. This is normal — let them sit with the discomfort for
+              at least 5 minutes.</li>
+            <li>When most of the class has written what first occurs to them, introduce the framework of the day
+              (below), in under 5 minutes.</li>
+            <li>Describe the framework briefly, with 1–2 examples not drawn from the talk's topic. Allow ~10 more
+              minutes of individual writing.</li>
+          </ol>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Silent Reading in Groups</h4><span class="dur">5 min</span>
+          </div>
+          <ol>
+            <li>Students pass notebooks around and silently read peers' questions. They may vote on favourites or make
+              small phrasing edits.</li>
+            <li>Maintain silence so students focus on reading.</li>
+            <li>Ends when every student has read every other student's questions in their group.</li>
+          </ol>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Group Discussion</h4><span class="dur">20 min</span>
+          </div>
+          <ol>
+            <li>Once silent reading is mostly done, groups may discuss.</li>
+            <li>Goal: identify the 4 most interesting questions in the group. They may rephrase, aggregate similar
+              questions, or write new ones that emerge.</li>
+            <li>Remind students not to start answering questions or defending positions. Redirect as often as needed —
+              the task is selecting 4 questions.</li>
+          </ol>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Question Submission</h4><span class="dur">5 min</span>
+          </div>
+          <ol>
+            <li>Ensure the Google Form is already shared on LearnX.</li>
+            <li>One student per group uses a device to submit a single form with all 4 selected questions.</li>
+          </ol>
+        </div>
+
+        <h4 style="font-size:1.1rem;margin:1.6rem 0 .3rem">Question Generation frameworks</h4>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:.6rem">Introduced incrementally over the sprint to
+          help students ideate more broadly.</p>
+        <div class="chips">
+          <span class="chip">5W1H</span>
+          <span class="chip">"Connection" words</span>
+          <span class="chip">Assumptions and Consequences</span>
+          <span class="chip">So What?</span>
+          <span class="chip">Perspective Taking</span>
+          <span class="chip">Questioning Circles</span>
+        </div>
+
+        <div class="callout">
+          <div class="h">Selecting questions for discussion</div>
+          Submitted questions are <b>not evaluated for grades</b>. The <a href="#rubric">Question Quality Rubric</a> is
+          used to select which of the student-submitted questions are best suited for discussion. Work is in progress on
+          an AI tool to help refine, compile and select a question set from student-submitted questions. <span
+            class="tag progress">In progress</span>
+        </div>
+        <div class="callout prov">
+          <div class="h">Open — see (k)</div>
+          Can these frameworks, developed for TED talks, be used to write questions about games? Should there be
+          dedicated frameworks for games? The day-4 framework is left blank pending this.
+        </div>
       </div>
 
+      <!-- TED guide -->
+      <div class="guidedoc" id="guide-ted">
+        <h3>TED Talk sessions</h3>
+        <p class="meta">Opens most teaching days · watched individually.</p>
+        <p class="prose">Each day begins with students watching the assigned talk individually, on their own devices.
+          The talks are intended as provocations rather than sources of answers. With instructor encouragement, many
+          students watch the video twice, and take notes to record their emerging thoughts and questions.</p>
+        <div class="callout">
+          <div class="h">Handover to Question Generation</div>
+          Devices are in use for the talk, then <b>put away</b> at the start of Question Generation. Make the handover
+          explicit.
+        </div>
+      </div>
+
+      <!-- Discussion types -->
+      <div class="guidedoc" id="guide-discussion">
+        <h3>Discussion types</h3>
+        <p class="meta">Three modes, running across the sprint.</p>
+        <div class="stage">
+          <div class="sh">
+            <h4>Small Groups Discussion</h4>
+          </div>
+          <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0">Open-ended discussion in small groups (5–6
+            students) to surface multiple viewpoints — <b>divergence</b>.</p>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Full Class Discussion</h4>
+          </div>
+          <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0">A facilitator leads a discussion to
+            synthesize viewpoints and surface reflections — <b>convergence</b> — on the content front. It also motivates
+            and introduces the frameworks that guide group discussion. Once a framework is introduced, the next day
+            becomes a Fishbowl Discussion to practise using it and giving peers feedback.</p>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Fishbowl Discussion</h4><span class="dur">groups of 8–10</span>
+          </div>
+          <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0">3–4 students discuss in an inner circle while
+            others observe in an outer circle, taking notes against a checklist. Each outer-circle person may observe
+            1–2 inner-circle people. Honest feedback is then offered per the checklist — first the checklist is passed
+            to the inner-circle person, then the group reflects as a whole on what should change. Groups then rotate:
+            the outer circle moves in.</p>
+        </div>
+        <div class="callout prov">
+          <div class="h">Open — see (l)</div>
+          What process will instructors follow to group students, and to ensure feedback is honest but kind and that
+          reflection happens? The fishbowl <b>checklist</b> itself (one per framework) is not yet written.
+        </div>
+      </div>
+
+      <!-- Games -->
+      <div class="guidedoc" id="guide-games">
+        <h3>Game debriefs <span class="tag progress" style="vertical-align:middle">In progress</span></h3>
+        <p class="meta">Follows every game (days 4, 6, 9) · adapted from Tim Rogmans, "Leading an Effective Simulation
+          Debrief," Harvard Business Impact Education (2026).</p>
+        <div class="callout prov">
+          <div class="h">Provisional</div>
+          This guide is provisional and depends on the exact games that will be used. It is adapted from a source on
+          scored business simulations; some guidance — particularly around leaderboards and scoring — may not apply to
+          the games this sprint actually uses. Revisit once games are confirmed.
+        </div>
+        <p class="prose">Games run on a brief–play–debrief cycle: set up the game and any pre-play knowledge, let
+          students play in a state of flow with minimal intervention, then debrief. The debrief is where most of the
+          learning happens — games are not self-debriefing, and play should never end without discussion while the
+          experience is fresh. Before the session, play through the game yourself and decide which moments link back to
+          the course.</p>
+        <div class="stage">
+          <div class="sh">
+            <h4>Let participants share their experience</h4><span class="dur">5–10 min</span>
+          </div>
+          <p style="font-size:.93rem;color:var(--ink-soft)">Open with free-format reactions — how it felt, where it was
+            hard, how they feel about results. Draw in as many voices as possible rather than responding to each; note
+            comments to return to later.</p>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Review the results</h4><span class="dur">~10 min</span>
+          </div>
+          <p style="font-size:.93rem;color:var(--ink-soft)">Share class results on a shared screen. Remind students many
+            games have no "winner," may include randomness or uneven starts, and are a safe space for mistakes. Walk
+            through specific decisions and ask students to explain their reasoning. This is the moment to challenge
+            shaky cause-and-effect logic, where the analytical gains come from. Keep any score secondary.</p>
+        </div>
+        <div class="stage">
+          <div class="sh">
+            <h4>Consolidate and link back</h4><span class="dur">~15 min</span>
+          </div>
+          <p style="font-size:.93rem;color:var(--ink-soft)">Use the game's materials selectively to tie the experience
+            to course themes and the real world. If students object that a game is unrealistic, don't get defensive —
+            invite reflection on how it differs from their context, and use "no model is perfect" as a teaching point.
+            Draw learning out of students rather than telling them what they learned.</p>
+        </div>
+      </div>
+
+      <!-- Portfolio -->
+      <div class="guidedoc" id="portfolio">
+        <h3>Digital Portfolio <span class="tag progress" style="vertical-align:middle">template in progress</span></h3>
+        <p class="meta">Built across the sprint · internal use only.</p>
+        <p class="prose">Students create a portfolio that is a self-evaluation of improvement across all the learning
+          outcomes. They assemble it in order to self-assess that they have met the course learning outcomes. It
+          showcases their best questions; interesting and well-put-together research exploring some idea; snapshots or
+          transcripts of their group discussions; and their best written reflections.</p>
+        <p class="prose">Self-assessment is primarily the curation, but must include justification.</p>
+        <div class="stage">
+          <div class="sh">
+            <h4>Handling reflections &amp; discussions</h4>
+          </div>
+          <ul>
+            <li>Photographing reflections is allowed.</li>
+            <li>Reflections are returned to students at the end of every week, before the "What did we learn this week?"
+              session. Week-3 reflections are returned on the first project day of that week (day 13).</li>
+            <li>Small-group discussions may be transcribed by students and used in the portfolio, with the permission of
+              their peers.</li>
+          </ul>
+        </div>
+        <div class="callout prov">
+          <div class="h">Open — see (j)</div>
+          The portfolio template is still to be created. Whether any support beyond office hours is needed is undecided.
+        </div>
+      </div>
+
+      <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Not yet written</h3>
+      <div class="guides">
+        <div class="gcard stub">
+          <h3>Self-Directed Research with AI <span class="tag open">Open</span></h3>
+          <p>A daily fixture, including Commit to Initial Positions and Revise Positions. AI-use policy, session format,
+            and who runs the day-2 demo (and how) are all undecided — see (m).</p>
+        </div>
+        <div class="gcard stub">
+          <h3>Written Reflections <span class="tag progress">In progress</span></h3>
+          <p>Pen and paper — no AI. Collected and returned weekly. A full facilitation guide (prompts, timing) is not
+            yet written.</p>
+        </div>
+        <div class="gcard stub">
+          <h3>"What did we learn this week?" <span class="tag open">Open</span></h3>
+          <p>Runs on days 5 and 9. How these sessions are structured is undecided — see (d).</p>
+        </div>
+        <div class="gcard stub">
+          <h3>Intention Setting</h3>
+          <p>Day 1 only. Not yet described.</p>
+        </div>
+        <div class="gcard stub">
+          <h3>Office Hours</h3>
+          <p>Daily afternoon slot alongside portfolio time. Purpose and format not yet described.</p>
+        </div>
+        <div class="gcard stub">
+          <h3>Student Choice of Media</h3>
+          <p>Days 11–12, with media selected on day 10. Selection process and the day-11/12 discussion slots are left
+            blank.</p>
+        </div>
+        <div class="gcard stub">
+          <h3>Project Presentations <span class="tag open">Open</span></h3>
+          <p>Day 15. Format conflicts with the project's own task 8 — see the note under Project.</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Named but not yet described</h3>
+      <div class="chips">
+        <span class="chip blank-chip">Discussion Norms — which norms</span>
+        <span class="chip blank-chip">Cognitive Biases — which list</span>
+        <span class="chip blank-chip">Ladder of Inference</span>
+        <span class="chip blank-chip">Discussion Coach</span>
+        <span class="chip blank-chip">Fishbowl checklist</span>
+        <span class="chip blank-chip">LearnX</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RUBRIC ============ -->
+  <section id="rubric">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">07</span> Question quality</div>
+      <h2 class="sec">Question Quality Rubric</h2>
+      <p class="lead">Used to gauge the quality of student-submitted questions and select the best for discussion —
+        <b>not for grades</b>. Questions are coded separately on four criteria, each at three levels. Interpret the
+        student's intended meaning as charitably as possible; except for Articulation, score the underlying question
+        rather than its wording; evaluate each criterion independently. The four criteria are the four adjectives in the
+        Question Generation activity statement.</p>
+
+      <div class="rubric">
+        <div class="crit">
+          <h4>Articulation</h4>
+          <p class="def">The clarity with which the intended question is communicated — whether it can be understood
+            without external clarification. Not grammar, style, or length.</p>
+          <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Core intent is ambiguous or incomplete;
+              clarification necessary before meaningful discussion.</span></div>
+          <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Meaning can be inferred, but unclear
+              references or specialised wording leave multiple plausible interpretations.</span></div>
+          <div class="lvl l3"><span class="n">L3 High</span><span class="d">Meaning is immediately clear and can be
+              understood without clarification.</span></div>
+        </div>
+        <div class="crit">
+          <h4>Openness</h4>
+          <p class="def">The degree to which a question invites multiple defensible interpretations or perspectives —
+            moving from "closed textbook" toward "open intellectual."</p>
+          <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Primarily seeks a known fact, verification,
+              or bounded choice.</span></div>
+          <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Answers exist in bodies of research in
+              certain domains; only a few well-reasoned positions are possible.</span></div>
+          <div class="lvl l3"><span class="n">L3 High</span><span class="d">Explores permanently open-ended and
+              contested questions; multiple well-reasoned positions remain possible even after substantial
+              discussion.</span></div>
+        </div>
+        <div class="crit">
+          <h4>Generativity</h4>
+          <p class="def">The extent to which answering the question naturally gives rise to further meaningful inquiry.
+          </p>
+          <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Largely terminal; once answered, little
+              natural direction for further discussion.</span></div>
+          <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Naturally invites one or two follow-up
+              questions within the same line of inquiry.</span></div>
+          <div class="lvl l3"><span class="n">L3 High</span><span class="d">Opens multiple avenues of inquiry; answering
+              it generates several deeper questions or directions.</span></div>
+        </div>
+        <div class="crit">
+          <h4>Metacognitive Depth</h4>
+          <p class="def">The degree to which the question prompts reflection on one's own thinking, assumptions,
+            reasoning, or biases.</p>
+          <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Focuses entirely on external facts, events,
+              or other people.</span></div>
+          <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Invites the respondent to draw on their own
+              beliefs or experiences, but primarily to express rather than examine them.</span></div>
+          <div class="lvl l3"><span class="n">L3 High</span><span class="d">Explicitly encourages the respondent to
+              examine, question, or revise their own assumptions, biases, mental models, or reasoning.</span></div>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.2rem;margin:2.2rem 0 .3rem">The question quadrant</h3>
+      <p style="font-size:.92rem;color:var(--ink-soft);max-width:60ch;margin-bottom:0">A reference for the Openness
+        criterion: questions sit on two axes — closed to open, and textual to intellectual.</p>
+      <div class="quadrant-wrap">
+        <svg viewBox="0 0 680 500" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>Phil Cam's question quadrant</title>
+          <desc>Two crossed axes. Horizontal runs from closed questions on the left to open questions on the right.
+            Vertical runs from textual questions at top to intellectual questions at bottom. Each quadrant carries a
+            description and a worked example.</desc>
+          <defs>
+            <marker id="qa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#847F8C" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </marker>
+          </defs>
+          <line x1="130" y1="260" x2="560" y2="260" stroke="#847F8C" stroke-width="1.5" marker-start="url(#qa)"
+            marker-end="url(#qa)" />
+          <line x1="345" y1="95" x2="345" y2="425" stroke="#847F8C" stroke-width="1.5" marker-start="url(#qa)"
+            marker-end="url(#qa)" />
+          <text x="345" y="58" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">Textual</text>
+          <text x="345" y="78" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">questions</text>
+          <text x="345" y="452" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">Intellectual</text>
+          <text x="345" y="472" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">questions</text>
+          <text x="120" y="256" text-anchor="end" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">Closed</text>
+          <text x="120" y="276" text-anchor="end" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">questions</text>
+          <text x="570" y="256" text-anchor="start" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">Open</text>
+          <text x="570" y="276" text-anchor="start" font-family="Fraunces,serif" font-size="17" font-style="italic"
+            fill="#3B3564">questions</text>
+          <g font-family="Spline Sans,sans-serif" font-size="12.5" fill="#0F6E56">
+            <text x="140" y="115">Answers can be found</text>
+            <text x="140" y="131">directly in the text.</text>
+            <text x="630" y="115" text-anchor="end">You can use your imagination</text>
+            <text x="630" y="131" text-anchor="end">to answer these questions.</text>
+            <text x="140" y="375">Ask-an-expert questions.</text>
+            <text x="140" y="391">Answers can be found in</text>
+            <text x="140" y="407">books, websites, and so on.</text>
+            <text x="630" y="370" text-anchor="end">These questions need discussion.</text>
+            <text x="630" y="386" text-anchor="end">They may have more than</text>
+            <text x="630" y="402" text-anchor="end">one possible answer.</text>
+          </g>
+          <g font-family="Spline Sans,sans-serif" font-size="12.5" fill="#A32D2D">
+            <text x="140" y="200">E.g. What are some things</text>
+            <text x="140" y="216">Minnie liked to do with</text>
+            <text x="140" y="232">spaghetti?</text>
+            <text x="360" y="200">E.g. Why did Minnie eat</text>
+            <text x="360" y="216">spaghetti on a truck?</text>
+            <text x="140" y="290">E.g. What do monkeys</text>
+            <text x="140" y="306">like to eat?</text>
+            <text x="360" y="290">E.g. Why do people want more things</text>
+            <text x="360" y="306">when they already have enough?</text>
+          </g>
+        </svg>
+        <div class="cap">(~Phil Cam, Question Quadrant)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT ============ -->
+  <section id="project">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">08</span> The project</div>
+      <h2 class="sec">Belief Audit</h2>
+      <p class="lead">The project is centred around a belief each student already holds, and what happens when they go
+        looking for the strongest case against it. Individual work throughout, with small groups appearing as peer help
+        (task 2) and critique (day 14).</p>
+
+      <div class="bigq">
+        <div class="l">The big question</div>
+        <p>What is a strongly held belief I have? What is the strongest argument against it?</p>
+      </div>
+
+      <div class="tasks">
+        <div class="task">
+          <div class="body"><b>Name your belief.</b><span class="sub">Write down 3–5 beliefs you hold strongly — about
+              success, relationships, education, society, or anything personally meaningful.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Choose your belief.</b><span class="sub">In a small group, share your list; peers help
+              identify which belief is most worth examining (usually the one that feels most obvious). Submit one
+              sentence stating the belief you will investigate.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Write down what you think — and why.</b><span class="sub">Before any research, privately
+              write out why you hold this belief and the evidence or experience behind it. Keep it to yourself — you'll
+              return to it at the end.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Go looking for the other side.</b><span class="sub">Find the strongest arguments against
+              your belief using all three: ask AI (brainstorm, but verify specific claims independently), talk to at
+              least 2 people who push back, and find at least one social media post, article, or research paper that
+              challenges it.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Keep a counter-argument log.</b><span class="sub">For every counter-argument, log the
+              argument in one sentence, the source, and the kind of evidence behind it — data, expert opinion, personal
+              story, or no real evidence.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Steelman the other side.</b><span class="sub">From your log, combine and sharpen the
+              strongest counter-arguments into the single most compelling case against your belief — one a person who
+              disagrees would recognise as fair and strong.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Evaluate.</b><span class="sub">How strong is the steelman, really? Does it change your
+              belief, complicate it, or leave it intact? Write a short personal evaluation of the strongest evidence
+              against you and what you now think.</span></div>
+        </div>
+        <div class="task">
+          <div class="body"><b>Present &amp; note.</b><span class="sub">Set up your work for a gallery walk (or private
+              1-on-1 session); others rotate through and ask about your belief, steelman, and evaluation, and you
+              respond live. End with a quick private note: has your belief shifted, and why or why not?</span></div>
+        </div>
+      </div>
+
+      <h4 style="font-size:1.05rem;margin:1.8rem 0 .5rem">Reflection questions</h4>
+      <p style="font-size:.9rem;color:var(--ink-soft);max-width:64ch;margin-bottom:.8rem">Meant to guide thinking at
+        different points — not all at once. Students return to them as they work.</p>
+      <ul style="columns:2;column-gap:2.4rem;font-size:.92rem;color:var(--ink-soft);max-width:70ch;padding-left:1.1rem">
+        <li>Which sources are you most likely to believe, and why?</li>
+        <li>What was the strongest argument you found against your belief?</li>
+        <li>What makes it the strongest — the evidence, or something else?</li>
+        <li>How did you decide which argument was strongest?</li>
+        <li>Did you change your mind? If yes, what moved you? If no, why not?</li>
+        <li>What have you learned from this exercise?</li>
+      </ul>
+
+      <div class="callout prov" style="margin-top:1.6rem">
+        <div class="h">To reconcile</div>
+        <b>Presentation format conflict.</b> Task 8 is written as a private 1-on-1 session <em>or</em> a within-class
+        gallery walk; the sprint plan's day 15 says Project Presentations across five slots. One format needs to win. ·
+        <b>Task 3</b> (the private pre-research write-up) has no scheduled slot — day 10 covers belief identification
+        and submission. · <b>Task 4's</b> "talk to at least 2 people" has no scheduled class time and likely runs
+        outside class hours.
+      </div>
       <div class="callout">
-        <div class="h">Selecting questions for discussion</div>
-        Submitted questions are <b>not evaluated for grades</b>. The <a href="#rubric">Question Quality Rubric</a> is used to select which of the student-submitted questions are best suited for discussion. Work is in progress on an AI tool to help refine, compile and select a question set from student-submitted questions. <span class="tag progress">In progress</span>
-      </div>
-      <div class="callout prov">
-        <div class="h">Open — see (k)</div>
-        Can these frameworks, developed for TED talks, be used to write questions about games? Should there be dedicated frameworks for games? The day-4 framework is left blank pending this.
+        <div class="h">AI use — project only</div>
+        Task 4 gives the only registered AI-use guidance so far: prompt an AI tool for the strongest counter-arguments,
+        brainstorm freely, but verify specific claims independently. This covers the project. Daily research sessions
+        remain open — see (m). Daily reflections are pen and paper, no AI.
       </div>
     </div>
+  </section>
 
-    <!-- TED guide -->
-    <div class="guidedoc" id="guide-ted">
-      <h3>TED Talk sessions</h3>
-      <p class="meta">Opens most teaching days · watched individually.</p>
-      <p class="prose">Each day begins with students watching the assigned talk individually, on their own devices. The talks are intended as provocations rather than sources of answers. With instructor encouragement, many students watch the video twice, and take notes to record their emerging thoughts and questions.</p>
-      <div class="callout">
-        <div class="h">Handover to Question Generation</div>
-        Devices are in use for the talk, then <b>put away</b> at the start of Question Generation. Make the handover explicit.
+  <!-- ============ TO-DO ============ -->
+  <section id="outstanding">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">09</span> For the teaching team</div>
+      <h2 class="sec">To-Do</h2>
+      <p class="lead">A running inventory of what still needs registering, writing, or deciding before the guide is
+        complete — including the open questions the team has flagged.</p>
+
+      <div class="outgrid">
+        <div class="outcol">
+          <h4><span class="tag progress">In progress</span></h4>
+          <ul>
+            <li>Course outcomes list + activity tagging</li>
+            <li>Revised student-facing description</li>
+            <li>AI tool for question selection</li>
+            <li>Digital Portfolio template</li>
+            <li>Game debrief guide (pending final games)</li>
+          </ul>
+        </div>
+        <div class="outcol">
+          <h4><span class="tag open">Open decisions</span></h4>
+          <ul>
+            <li>Assessment &amp; grading scheme</li>
+            <li>Room assignment</li>
+            <li>Student AI-use policy (research sessions)</li>
+            <li>Project presentation format</li>
+          </ul>
+        </div>
+        <div class="outcol">
+          <h4>To be written</h4>
+          <ul>
+            <li>Day-4 Question Generation framework</li>
+            <li>Days 11–12 discussion slots</li>
+            <li>Session guides: research, reflections, weekly review, intention setting, office hours, student choice,
+              presentations</li>
+            <li>Fishbowl checklists</li>
+          </ul>
+        </div>
+        <div class="outcol">
+          <h4>Named, undescribed</h4>
+          <ul>
+            <li>Discussion Norms (which norms)</li>
+            <li>Cognitive Biases (which list)</li>
+            <li>Ladder of Inference</li>
+            <li>Discussion Coach</li>
+            <li>The games themselves + pre-play briefs</li>
+            <li>The TED talk list, mapped to days</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.3rem;margin:2.4rem 0 1rem">Open questions</h3>
+      <div class="oq">
+        <div class="oqrow"><span class="id">a</span><span class="q">How important is it for students to commit to a
+            provisional position, then reflect on and revise it once after research and again after discussion?<span
+              class="ctx">The activity descriptions currently assume "yes," but this is not decided. The post-research
+              revision point is not yet homed in any activity.</span></span></div>
+        <div class="oqrow"><span class="id">b</span><span class="q">How important is it for students to revisit the
+            original questions — examining the framing of the question, the value of the discussion it produced, and
+            similar?<span class="ctx">Nothing in the four activities currently revisits the framing of a
+              question.</span></span></div>
+        <div class="oqrow"><span class="id">c</span><span class="q">Are the discussion frameworks limited to Discussion
+            Norms and Cognitive Biases? Is anything else needed?</span></div>
+        <div class="oqrow"><span class="id">d</span><span class="q">How should the "What did we learn this week?"
+            sessions be structured?</span></div>
+        <div class="oqrow"><span class="id">f</span><span class="q">Are we not using Discussion Coach at all in the
+            research sessions?</span></div>
+        <div class="oqrow"><span class="id">g</span><span class="q">Is "Ladder of Inference" a framework for discussions
+            or for research?</span></div>
+        <div class="oqrow"><span class="id">h</span><span class="q">Can the demo sessions for how to do research happen
+            online — i.e. make the sprint hybrid?</span></div>
+        <div class="oqrow"><span class="id">i</span><span class="q">Will game-day question generation happen smoothly?
+            What scaffolds (extra reading or video) might help students connect the game to real-world ideas and ask
+            good questions, rather than focusing on game mechanics?</span></div>
+        <div class="oqrow"><span class="id">j</span><span class="q">What will the Digital Portfolio look like — is the
+            template still to be created? Any explicit support needed beyond office hours?<span class="ctx">Partly
+              resolved: contents and handling are settled. Template and support remain open.</span></span></div>
+        <div class="oqrow"><span class="id">k</span><span class="q">Can the Question Generation frameworks (built for
+            TED talks) be used for games? Should games get dedicated frameworks?<span class="ctx">The day-4 framework is
+              blank pending this.</span></span></div>
+        <div class="oqrow"><span class="id">l</span><span class="q">What process will instructors follow to group
+            students for fishbowl, and to ensure feedback is honest but kind and that reflection happens?</span></div>
+        <div class="oqrow"><span class="id">m</span><span class="q">For the Self-Directed Research with AI sessions:
+            what is the AI-use policy, what is the session format, and who runs the demo and how?</span></div>
+      </div>
+
+      <h3 style="font-size:1.2rem;margin:2.4rem 0 1rem">Candidate talks &amp; games <span class="tag progress"
+          style="vertical-align:middle">likely, not final</span></h3>
+      <div class="chips">
+        <span class="chip">Dan Gilbert — Why we make bad decisions / The surprising science of happiness</span>
+        <span class="chip">Matt Ridley — When ideas have sex</span>
+        <span class="chip">Tragedy of the Commons — MIT P-Sims <span class="mono"
+            style="color:var(--ink-faint)">(game)</span></span>
+        <span class="chip">Dan Dennett — Dangerous memes</span>
+        <span class="chip">Zeynep Tufekci — Machine intelligence makes human morals more important</span>
+        <span class="chip">Akram Awad — Will AI make humans useless?</span>
+      </div>
+
+      <div class="placeholder" style="margin-top:2rem">
+        <h3>Revised student-facing description <span class="tag progress">In progress</span></h3>
+        <p>The original student-facing description is set aside pending a rewrite that incorporates everything
+          registered here — the sprint format, the Belief Audit, the activities and their framing, and the AI-as-context
+          stance. To be written once the outcomes list is settled.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Discussion types -->
-    <div class="guidedoc" id="guide-discussion">
-      <h3>Discussion types</h3>
-      <p class="meta">Three modes, running across the sprint.</p>
-      <div class="stage">
-        <div class="sh"><h4>Small Groups Discussion</h4></div>
-        <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0">Open-ended discussion in small groups (5–6 students) to surface multiple viewpoints — <b>divergence</b>.</p>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Full Class Discussion</h4></div>
-        <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0">A facilitator leads a discussion to synthesize viewpoints and surface reflections — <b>convergence</b> — on the content front. It also motivates and introduces the frameworks that guide group discussion. Once a framework is introduced, the next day becomes a Fishbowl Discussion to practise using it and giving peers feedback.</p>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Fishbowl Discussion</h4><span class="dur">groups of 8–10</span></div>
-        <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0">3–4 students discuss in an inner circle while others observe in an outer circle, taking notes against a checklist. Each outer-circle person may observe 1–2 inner-circle people. Honest feedback is then offered per the checklist — first the checklist is passed to the inner-circle person, then the group reflects as a whole on what should change. Groups then rotate: the outer circle moves in.</p>
-      </div>
-      <div class="callout prov">
-        <div class="h">Open — see (l)</div>
-        What process will instructors follow to group students, and to ensure feedback is honest but kind and that reflection happens? The fishbowl <b>checklist</b> itself (one per framework) is not yet written.
-      </div>
+  <footer>
+    <div class="wrap">
+      <span>LEA-101 · Critical Thinking in the Age of AI · Instructor Guide · Atria University</span>
+      <span class="mono">Working document — in progress</span>
     </div>
-
-    <!-- Games -->
-    <div class="guidedoc" id="guide-games">
-      <h3>Game debriefs <span class="tag progress" style="vertical-align:middle">In progress</span></h3>
-      <p class="meta">Follows every game (days 4, 6, 9) · adapted from Tim Rogmans, "Leading an Effective Simulation Debrief," Harvard Business Impact Education (2026).</p>
-      <div class="callout prov">
-        <div class="h">Provisional</div>
-        This guide is provisional and depends on the exact games that will be used. It is adapted from a source on scored business simulations; some guidance — particularly around leaderboards and scoring — may not apply to the games this sprint actually uses. Revisit once games are confirmed.
-      </div>
-      <p class="prose">Games run on a brief–play–debrief cycle: set up the game and any pre-play knowledge, let students play in a state of flow with minimal intervention, then debrief. The debrief is where most of the learning happens — games are not self-debriefing, and play should never end without discussion while the experience is fresh. Before the session, play through the game yourself and decide which moments link back to the course.</p>
-      <div class="stage">
-        <div class="sh"><h4>Let participants share their experience</h4><span class="dur">5–10 min</span></div>
-        <p style="font-size:.93rem;color:var(--ink-soft)">Open with free-format reactions — how it felt, where it was hard, how they feel about results. Draw in as many voices as possible rather than responding to each; note comments to return to later.</p>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Review the results</h4><span class="dur">~10 min</span></div>
-        <p style="font-size:.93rem;color:var(--ink-soft)">Share class results on a shared screen. Remind students many games have no "winner," may include randomness or uneven starts, and are a safe space for mistakes. Walk through specific decisions and ask students to explain their reasoning. This is the moment to challenge shaky cause-and-effect logic, where the analytical gains come from. Keep any score secondary.</p>
-      </div>
-      <div class="stage">
-        <div class="sh"><h4>Consolidate and link back</h4><span class="dur">~15 min</span></div>
-        <p style="font-size:.93rem;color:var(--ink-soft)">Use the game's materials selectively to tie the experience to course themes and the real world. If students object that a game is unrealistic, don't get defensive — invite reflection on how it differs from their context, and use "no model is perfect" as a teaching point. Draw learning out of students rather than telling them what they learned.</p>
-      </div>
-    </div>
-
-    <!-- Portfolio -->
-    <div class="guidedoc" id="portfolio">
-      <h3>Digital Portfolio <span class="tag progress" style="vertical-align:middle">template in progress</span></h3>
-      <p class="meta">Built across the sprint · internal use only.</p>
-      <p class="prose">Students create a portfolio that is a self-evaluation of improvement across all the learning outcomes. They assemble it in order to self-assess that they have met the course learning outcomes. It showcases their best questions; interesting and well-put-together research exploring some idea; snapshots or transcripts of their group discussions; and their best written reflections.</p>
-      <p class="prose">Self-assessment is primarily the curation, but must include justification.</p>
-      <div class="stage">
-        <div class="sh"><h4>Handling reflections &amp; discussions</h4></div>
-        <ul>
-          <li>Photographing reflections is allowed.</li>
-          <li>Reflections are returned to students at the end of every week, before the "What did we learn this week?" session. Week-3 reflections are returned on the first project day of that week (day 13).</li>
-          <li>Small-group discussions may be transcribed by students and used in the portfolio, with the permission of their peers.</li>
-        </ul>
-      </div>
-      <div class="callout prov">
-        <div class="h">Open — see (j)</div>
-        The portfolio template is still to be created. Whether any support beyond office hours is needed is undecided.
-      </div>
-    </div>
-
-    <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Not yet written</h3>
-    <div class="guides">
-      <div class="gcard stub">
-        <h3>Self-Directed Research with AI <span class="tag open">Open</span></h3>
-        <p>A daily fixture, including Commit to Initial Positions and Revise Positions. AI-use policy, session format, and who runs the day-2 demo (and how) are all undecided — see (m).</p>
-      </div>
-      <div class="gcard stub">
-        <h3>Written Reflections <span class="tag progress">In progress</span></h3>
-        <p>Pen and paper — no AI. Collected and returned weekly. A full facilitation guide (prompts, timing) is not yet written.</p>
-      </div>
-      <div class="gcard stub">
-        <h3>"What did we learn this week?" <span class="tag open">Open</span></h3>
-        <p>Runs on days 5 and 9. How these sessions are structured is undecided — see (d).</p>
-      </div>
-      <div class="gcard stub">
-        <h3>Intention Setting</h3>
-        <p>Day 1 only. Not yet described.</p>
-      </div>
-      <div class="gcard stub">
-        <h3>Office Hours</h3>
-        <p>Daily afternoon slot alongside portfolio time. Purpose and format not yet described.</p>
-      </div>
-      <div class="gcard stub">
-        <h3>Student Choice of Media</h3>
-        <p>Days 11–12, with media selected on day 10. Selection process and the day-11/12 discussion slots are left blank.</p>
-      </div>
-      <div class="gcard stub">
-        <h3>Project Presentations <span class="tag open">Open</span></h3>
-        <p>Day 15. Format conflicts with the project's own task 8 — see the note under Project.</p>
-      </div>
-    </div>
-
-    <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Named but not yet described</h3>
-    <div class="chips">
-      <span class="chip blank-chip">Discussion Norms — which norms</span>
-      <span class="chip blank-chip">Cognitive Biases — which list</span>
-      <span class="chip blank-chip">Ladder of Inference</span>
-      <span class="chip blank-chip">Discussion Coach</span>
-      <span class="chip blank-chip">Fishbowl checklist</span>
-      <span class="chip blank-chip">LearnX</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ RUBRIC ============ -->
-<section id="rubric">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">07</span> Question quality</div>
-    <h2 class="sec">Question Quality Rubric</h2>
-    <p class="lead">Used to gauge the quality of student-submitted questions and select the best for discussion — <b>not for grades</b>. Questions are coded separately on four criteria, each at three levels. Interpret the student's intended meaning as charitably as possible; except for Articulation, score the underlying question rather than its wording; evaluate each criterion independently. The four criteria are the four adjectives in the Question Generation activity statement.</p>
-
-    <div class="rubric">
-      <div class="crit">
-        <h4>Articulation</h4>
-        <p class="def">The clarity with which the intended question is communicated — whether it can be understood without external clarification. Not grammar, style, or length.</p>
-        <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Core intent is ambiguous or incomplete; clarification necessary before meaningful discussion.</span></div>
-        <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Meaning can be inferred, but unclear references or specialised wording leave multiple plausible interpretations.</span></div>
-        <div class="lvl l3"><span class="n">L3 High</span><span class="d">Meaning is immediately clear and can be understood without clarification.</span></div>
-      </div>
-      <div class="crit">
-        <h4>Openness</h4>
-        <p class="def">The degree to which a question invites multiple defensible interpretations or perspectives — moving from "closed textbook" toward "open intellectual."</p>
-        <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Primarily seeks a known fact, verification, or bounded choice.</span></div>
-        <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Answers exist in bodies of research in certain domains; only a few well-reasoned positions are possible.</span></div>
-        <div class="lvl l3"><span class="n">L3 High</span><span class="d">Explores permanently open-ended and contested questions; multiple well-reasoned positions remain possible even after substantial discussion.</span></div>
-      </div>
-      <div class="crit">
-        <h4>Generativity</h4>
-        <p class="def">The extent to which answering the question naturally gives rise to further meaningful inquiry.</p>
-        <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Largely terminal; once answered, little natural direction for further discussion.</span></div>
-        <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Naturally invites one or two follow-up questions within the same line of inquiry.</span></div>
-        <div class="lvl l3"><span class="n">L3 High</span><span class="d">Opens multiple avenues of inquiry; answering it generates several deeper questions or directions.</span></div>
-      </div>
-      <div class="crit">
-        <h4>Metacognitive Depth</h4>
-        <p class="def">The degree to which the question prompts reflection on one's own thinking, assumptions, reasoning, or biases.</p>
-        <div class="lvl l1"><span class="n">L1 Low</span><span class="d">Focuses entirely on external facts, events, or other people.</span></div>
-        <div class="lvl l2"><span class="n">L2 Med</span><span class="d">Invites the respondent to draw on their own beliefs or experiences, but primarily to express rather than examine them.</span></div>
-        <div class="lvl l3"><span class="n">L3 High</span><span class="d">Explicitly encourages the respondent to examine, question, or revise their own assumptions, biases, mental models, or reasoning.</span></div>
-      </div>
-    </div>
-
-    <h3 style="font-size:1.2rem;margin:2.2rem 0 .3rem">The question quadrant</h3>
-    <p style="font-size:.92rem;color:var(--ink-soft);max-width:60ch;margin-bottom:0">A reference for the Openness criterion: questions sit on two axes — closed to open, and textual to intellectual.</p>
-    <div class="quadrant-wrap">
-      <svg viewBox="0 0 680 500" role="img" xmlns="http://www.w3.org/2000/svg">
-        <title>Phil Cam's question quadrant</title>
-        <desc>Two crossed axes. Horizontal runs from closed questions on the left to open questions on the right. Vertical runs from textual questions at top to intellectual questions at bottom. Each quadrant carries a description and a worked example.</desc>
-        <defs><marker id="qa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#847F8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-        <line x1="130" y1="260" x2="560" y2="260" stroke="#847F8C" stroke-width="1.5" marker-start="url(#qa)" marker-end="url(#qa)"/>
-        <line x1="345" y1="95" x2="345" y2="425" stroke="#847F8C" stroke-width="1.5" marker-start="url(#qa)" marker-end="url(#qa)"/>
-        <text x="345" y="58" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">Textual</text>
-        <text x="345" y="78" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">questions</text>
-        <text x="345" y="452" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">Intellectual</text>
-        <text x="345" y="472" text-anchor="middle" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">questions</text>
-        <text x="120" y="256" text-anchor="end" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">Closed</text>
-        <text x="120" y="276" text-anchor="end" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">questions</text>
-        <text x="570" y="256" text-anchor="start" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">Open</text>
-        <text x="570" y="276" text-anchor="start" font-family="Fraunces,serif" font-size="17" font-style="italic" fill="#3B3564">questions</text>
-        <g font-family="Spline Sans,sans-serif" font-size="12.5" fill="#0F6E56">
-          <text x="140" y="115">Answers can be found</text>
-          <text x="140" y="131">directly in the text.</text>
-          <text x="630" y="115" text-anchor="end">You can use your imagination</text>
-          <text x="630" y="131" text-anchor="end">to answer these questions.</text>
-          <text x="140" y="375">Ask-an-expert questions.</text>
-          <text x="140" y="391">Answers can be found in</text>
-          <text x="140" y="407">books, websites, and so on.</text>
-          <text x="630" y="370" text-anchor="end">These questions need discussion.</text>
-          <text x="630" y="386" text-anchor="end">They may have more than</text>
-          <text x="630" y="402" text-anchor="end">one possible answer.</text>
-        </g>
-        <g font-family="Spline Sans,sans-serif" font-size="12.5" fill="#A32D2D">
-          <text x="140" y="200">E.g. What are some things</text>
-          <text x="140" y="216">Minnie liked to do with</text>
-          <text x="140" y="232">spaghetti?</text>
-          <text x="360" y="200">E.g. Why did Minnie eat</text>
-          <text x="360" y="216">spaghetti on a truck?</text>
-          <text x="140" y="290">E.g. What do monkeys</text>
-          <text x="140" y="306">like to eat?</text>
-          <text x="360" y="290">E.g. Why do people want more things</text>
-          <text x="360" y="306">when they already have enough?</text>
-        </g>
-      </svg>
-      <div class="cap">(~Phil Cam, Question Quadrant)</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROJECT ============ -->
-<section id="project">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">08</span> The project</div>
-    <h2 class="sec">Belief Audit</h2>
-    <p class="lead">The project is centred around a belief each student already holds, and what happens when they go looking for the strongest case against it. Individual work throughout, with small groups appearing as peer help (task 2) and critique (day 14).</p>
-
-    <div class="bigq">
-      <div class="l">The big question</div>
-      <p>What is a strongly held belief I have? What is the strongest argument against it?</p>
-    </div>
-
-    <div class="tasks">
-      <div class="task"><div class="body"><b>Name your belief.</b><span class="sub">Write down 3–5 beliefs you hold strongly — about success, relationships, education, society, or anything personally meaningful.</span></div></div>
-      <div class="task"><div class="body"><b>Choose your belief.</b><span class="sub">In a small group, share your list; peers help identify which belief is most worth examining (usually the one that feels most obvious). Submit one sentence stating the belief you will investigate.</span></div></div>
-      <div class="task"><div class="body"><b>Write down what you think — and why.</b><span class="sub">Before any research, privately write out why you hold this belief and the evidence or experience behind it. Keep it to yourself — you'll return to it at the end.</span></div></div>
-      <div class="task"><div class="body"><b>Go looking for the other side.</b><span class="sub">Find the strongest arguments against your belief using all three: ask AI (brainstorm, but verify specific claims independently), talk to at least 2 people who push back, and find at least one social media post, article, or research paper that challenges it.</span></div></div>
-      <div class="task"><div class="body"><b>Keep a counter-argument log.</b><span class="sub">For every counter-argument, log the argument in one sentence, the source, and the kind of evidence behind it — data, expert opinion, personal story, or no real evidence.</span></div></div>
-      <div class="task"><div class="body"><b>Steelman the other side.</b><span class="sub">From your log, combine and sharpen the strongest counter-arguments into the single most compelling case against your belief — one a person who disagrees would recognise as fair and strong.</span></div></div>
-      <div class="task"><div class="body"><b>Evaluate.</b><span class="sub">How strong is the steelman, really? Does it change your belief, complicate it, or leave it intact? Write a short personal evaluation of the strongest evidence against you and what you now think.</span></div></div>
-      <div class="task"><div class="body"><b>Present &amp; note.</b><span class="sub">Set up your work for a gallery walk (or private 1-on-1 session); others rotate through and ask about your belief, steelman, and evaluation, and you respond live. End with a quick private note: has your belief shifted, and why or why not?</span></div></div>
-    </div>
-
-    <h4 style="font-size:1.05rem;margin:1.8rem 0 .5rem">Reflection questions</h4>
-    <p style="font-size:.9rem;color:var(--ink-soft);max-width:64ch;margin-bottom:.8rem">Meant to guide thinking at different points — not all at once. Students return to them as they work.</p>
-    <ul style="columns:2;column-gap:2.4rem;font-size:.92rem;color:var(--ink-soft);max-width:70ch;padding-left:1.1rem">
-      <li>Which sources are you most likely to believe, and why?</li>
-      <li>What was the strongest argument you found against your belief?</li>
-      <li>What makes it the strongest — the evidence, or something else?</li>
-      <li>How did you decide which argument was strongest?</li>
-      <li>Did you change your mind? If yes, what moved you? If no, why not?</li>
-      <li>What have you learned from this exercise?</li>
-    </ul>
-
-    <div class="callout prov" style="margin-top:1.6rem">
-      <div class="h">To reconcile</div>
-      <b>Presentation format conflict.</b> Task 8 is written as a private 1-on-1 session <em>or</em> a within-class gallery walk; the sprint plan's day 15 says Project Presentations across five slots. One format needs to win. · <b>Task 3</b> (the private pre-research write-up) has no scheduled slot — day 10 covers belief identification and submission. · <b>Task 4's</b> "talk to at least 2 people" has no scheduled class time and likely runs outside class hours.
-    </div>
-    <div class="callout">
-      <div class="h">AI use — project only</div>
-      Task 4 gives the only registered AI-use guidance so far: prompt an AI tool for the strongest counter-arguments, brainstorm freely, but verify specific claims independently. This covers the project. Daily research sessions remain open — see (m). Daily reflections are pen and paper, no AI.
-    </div>
-  </div>
-</section>
-
-<!-- ============ TO-DO ============ -->
-<section id="outstanding">
-  <div class="wrap">
-    <div class="eyebrow"><span class="n">09</span> For the teaching team</div>
-    <h2 class="sec">To-Do</h2>
-    <p class="lead">A running inventory of what still needs registering, writing, or deciding before the guide is complete — including the open questions the team has flagged.</p>
-
-    <div class="outgrid">
-      <div class="outcol">
-        <h4><span class="tag progress">In progress</span></h4>
-        <ul>
-          <li>Course outcomes list + activity tagging</li>
-          <li>Revised student-facing description</li>
-          <li>AI tool for question selection</li>
-          <li>Digital Portfolio template</li>
-          <li>Game debrief guide (pending final games)</li>
-        </ul>
-      </div>
-      <div class="outcol">
-        <h4><span class="tag open">Open decisions</span></h4>
-        <ul>
-          <li>Assessment &amp; grading scheme</li>
-          <li>Room assignment</li>
-          <li>Student AI-use policy (research sessions)</li>
-          <li>Project presentation format</li>
-        </ul>
-      </div>
-      <div class="outcol">
-        <h4>To be written</h4>
-        <ul>
-          <li>Day-4 Question Generation framework</li>
-          <li>Days 11–12 discussion slots</li>
-          <li>Session guides: research, reflections, weekly review, intention setting, office hours, student choice, presentations</li>
-          <li>Fishbowl checklists</li>
-        </ul>
-      </div>
-      <div class="outcol">
-        <h4>Named, undescribed</h4>
-        <ul>
-          <li>Discussion Norms (which norms)</li>
-          <li>Cognitive Biases (which list)</li>
-          <li>Ladder of Inference</li>
-          <li>Discussion Coach</li>
-          <li>The games themselves + pre-play briefs</li>
-          <li>The TED talk list, mapped to days</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 style="font-size:1.3rem;margin:2.4rem 0 1rem">Open questions</h3>
-    <div class="oq">
-      <div class="oqrow"><span class="id">a</span><span class="q">How important is it for students to commit to a provisional position, then reflect on and revise it once after research and again after discussion?<span class="ctx">The activity descriptions currently assume "yes," but this is not decided. The post-research revision point is not yet homed in any activity.</span></span></div>
-      <div class="oqrow"><span class="id">b</span><span class="q">How important is it for students to revisit the original questions — examining the framing of the question, the value of the discussion it produced, and similar?<span class="ctx">Nothing in the four activities currently revisits the framing of a question.</span></span></div>
-      <div class="oqrow"><span class="id">c</span><span class="q">Are the discussion frameworks limited to Discussion Norms and Cognitive Biases? Is anything else needed?</span></div>
-      <div class="oqrow"><span class="id">d</span><span class="q">How should the "What did we learn this week?" sessions be structured?</span></div>
-      <div class="oqrow"><span class="id">f</span><span class="q">Are we not using Discussion Coach at all in the research sessions?</span></div>
-      <div class="oqrow"><span class="id">g</span><span class="q">Is "Ladder of Inference" a framework for discussions or for research?</span></div>
-      <div class="oqrow"><span class="id">h</span><span class="q">Can the demo sessions for how to do research happen online — i.e. make the sprint hybrid?</span></div>
-      <div class="oqrow"><span class="id">i</span><span class="q">Will game-day question generation happen smoothly? What scaffolds (extra reading or video) might help students connect the game to real-world ideas and ask good questions, rather than focusing on game mechanics?</span></div>
-      <div class="oqrow"><span class="id">j</span><span class="q">What will the Digital Portfolio look like — is the template still to be created? Any explicit support needed beyond office hours?<span class="ctx">Partly resolved: contents and handling are settled. Template and support remain open.</span></span></div>
-      <div class="oqrow"><span class="id">k</span><span class="q">Can the Question Generation frameworks (built for TED talks) be used for games? Should games get dedicated frameworks?<span class="ctx">The day-4 framework is blank pending this.</span></span></div>
-      <div class="oqrow"><span class="id">l</span><span class="q">What process will instructors follow to group students for fishbowl, and to ensure feedback is honest but kind and that reflection happens?</span></div>
-      <div class="oqrow"><span class="id">m</span><span class="q">For the Self-Directed Research with AI sessions: what is the AI-use policy, what is the session format, and who runs the demo and how?</span></div>
-    </div>
-
-    <h3 style="font-size:1.2rem;margin:2.4rem 0 1rem">Candidate talks &amp; games <span class="tag progress" style="vertical-align:middle">likely, not final</span></h3>
-    <div class="chips">
-      <span class="chip">Dan Gilbert — Why we make bad decisions / The surprising science of happiness</span>
-      <span class="chip">Matt Ridley — When ideas have sex</span>
-      <span class="chip">Tragedy of the Commons — MIT P-Sims <span class="mono" style="color:var(--ink-faint)">(game)</span></span>
-      <span class="chip">Dan Dennett — Dangerous memes</span>
-      <span class="chip">Zeynep Tufekci — Machine intelligence makes human morals more important</span>
-      <span class="chip">Akram Awad — Will AI make humans useless?</span>
-    </div>
-
-    <div class="placeholder" style="margin-top:2rem">
-      <h3>Revised student-facing description <span class="tag progress">In progress</span></h3>
-      <p>The original student-facing description is set aside pending a rewrite that incorporates everything registered here — the sprint format, the Belief Audit, the activities and their framing, and the AI-as-context stance. To be written once the outcomes list is settled.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <span>LEA-101 · Critical Thinking in the Age of AI · Instructor Guide · Atria University</span>
-    <span class="mono">Working document — in progress</span>
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>
