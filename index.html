@@ -1535,6 +1535,265 @@
         padding: 2.6rem 0
       }
     }
+
+    /* ---- sprint plan (card view) ---- */
+    .ct-sprint {
+      font-family: inherit;
+      color: var(--ink);
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      max-width: 760px;
+      margin: 0 auto
+    }
+
+    .ct-sprint * {
+      box-sizing: border-box
+    }
+
+    .ct-sprint .ct-intro {
+      color: var(--ink-soft);
+      font-size: .9rem;
+      margin: 0 0 1rem;
+      max-width: 60ch
+    }
+
+    .ct-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem 1rem;
+      margin: 0 0 1.4rem;
+      font-size: .78rem;
+      color: var(--ink-soft);
+      font-family: "Spline Sans Mono", monospace
+    }
+
+    .ct-leg {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem
+    }
+
+    .ct-dot {
+      width: .85rem;
+      height: .85rem;
+      border-radius: 3px;
+      border: 1px solid;
+      display: inline-block
+    }
+
+    .ct-legnote {
+      font-size: .78rem;
+      color: var(--ink-faint);
+      margin: -.9rem 0 1.4rem
+    }
+
+    .ct-legnote b {
+      font-weight: 600;
+      color: var(--ink-soft)
+    }
+
+    .ct-weeks {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem
+    }
+
+    details.ct-week {
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      background: var(--card);
+      overflow: hidden
+    }
+
+    details.ct-week[open] {
+      padding-bottom: .2rem
+    }
+
+    .ct-week-head {
+      font-family: "Spline Sans Mono", monospace;
+      font-weight: 500;
+      font-size: .8rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .75rem .9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      color: var(--indigo);
+      cursor: pointer;
+      list-style: none;
+      background: var(--paper-2)
+    }
+
+    details.ct-week[open] .ct-week-head {
+      border-bottom: 1px solid var(--hair-strong);
+      margin-bottom: .7rem
+    }
+
+    .ct-week-head::-webkit-details-marker {
+      display: none
+    }
+
+    .ct-week-head::before {
+      content: "+";
+      font-size: 1rem;
+      color: var(--ink-faint);
+      margin-right: .6rem;
+      width: 1em;
+      display: inline-block
+    }
+
+    details.ct-week[open] .ct-week-head::before {
+      content: "−"
+    }
+
+    .ct-week-head .ct-week-title {
+      flex: 1
+    }
+
+    .ct-week-body {
+      padding: 0 .9rem .8rem
+    }
+
+    .ct-week-dates {
+      font-weight: 400;
+      font-size: .72rem;
+      color: var(--ink-faint);
+      text-transform: none;
+      letter-spacing: 0
+    }
+
+    details.ct-day {
+      display: block;
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: .6rem;
+      background: var(--card)
+    }
+
+    .ct-project {
+      border-style: dashed;
+      border-color: var(--hair-strong);
+      background: var(--paper-2)
+    }
+
+    .ct-day-head {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      flex-wrap: wrap;
+      padding: .55rem .7rem;
+      background: var(--paper-2);
+      cursor: pointer;
+      list-style: none
+    }
+
+    details.ct-day[open] .ct-day-head {
+      border-bottom: 1px solid var(--hair)
+    }
+
+    .ct-day-head::-webkit-details-marker {
+      display: none
+    }
+
+    .ct-day-head::before {
+      content: "+";
+      font-size: .9rem;
+      color: var(--ink-faint);
+      width: 1em;
+      display: inline-block;
+      flex: none
+    }
+
+    details.ct-day[open] .ct-day-head::before {
+      content: "−"
+    }
+
+    .ct-project .ct-day-head {
+      background: var(--hair)
+    }
+
+    .ct-daynum {
+      font-family: "Spline Sans Mono", monospace;
+      font-weight: 500;
+      font-size: .68rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink-faint)
+    }
+
+    .ct-daytitle {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: .95rem;
+      color: var(--ink);
+      flex: 1
+    }
+
+    .ct-tag {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .64rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--progress);
+      background: var(--progress-bg);
+      border-radius: 20px;
+      padding: .1rem .5rem
+    }
+
+    .ct-block {
+      display: flex;
+      gap: 1.1rem;
+      padding: .5rem .8rem;
+      border-left: 3px solid;
+      align-items: flex-start;
+      font-size: .8rem;
+      border-bottom: 1px solid rgba(35, 32, 40, .05)
+    }
+
+    .ct-time {
+      flex: 0 0 5.6rem;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .68rem;
+      color: var(--ink-soft);
+      font-variant-numeric: tabular-nums;
+      padding-top: .05rem;
+      opacity: .85
+    }
+
+    .ct-body {
+      flex: 1;
+      color: var(--ink)
+    }
+
+    .ct-pill {
+      display: inline-block;
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .62rem;
+      font-weight: 500;
+      border-radius: 20px;
+      padding: .05rem .5rem;
+      margin-left: .35rem;
+      white-space: nowrap;
+      line-height: 1.5
+    }
+
+    .ct-sep {
+      font-family: "Spline Sans Mono", monospace;
+      font-size: .62rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-align: center;
+      padding: .2rem 0;
+      background: var(--paper)
+    }
+
+    .ct-project .ct-sep {
+      background: var(--paper-2)
+    }
   </style>
 </head>
 
@@ -1545,13 +1804,13 @@
       <span class="code">LEA-101</span>
       <div class="links">
         <a href="#fundamentals">Fundamentals</a>
-        <a href="#schedule">Talks &amp; games</a>
-        <a href="#frameworks">Frameworks</a>
+        <a href="#schedule">Talks &amp; Games</a>
         <a href="#outcomes">Outcomes</a>
         <a href="#sprint">Sprint</a>
-        <a href="#guides">Session guides</a>
-        <a href="#rubric">Question rubric</a>
+        <a href="#guides">Activity Guides</a>
+        <a href="#frameworks">Frameworks</a>
         <a href="#project">Project</a>
+        <a href="#rubric">Question Rubric</a>
         <a href="#outstanding">To-Do</a>
       </div>
     </div>
@@ -1563,7 +1822,8 @@
       <h1 class="hero-anim d2">Critical Thinking <em>in the Age of AI</em></h1>
       <p class="sub hero-anim d3">This document is a shared reference for the teaching team of the Critical Thinking in
         the Age of AI sprint. It describes the course objectives, 15-day sprint plan and methodology that we will follow
-        to conduct different sprint sessions. This is currently a work-in-progress.</p>
+        to conduct different sprint sessions.</p>
+      <p class="sub hero-anim d3"><a href="https://docs.google.com/presentation/d/10nwf-P-wxJTJZyyFr3Obu8nBmPk8qP6r/edit?usp=sharing&ouid=116185959821444035704&rtpof=true&sd=true">Link to the shared Slide Deck (to introduce the course and each framework).</a></p>
 
       <div class="metastrip hero-anim d4">
         <div class="m"><span class="lab">Course code</span><span class="val mono">LEA-101</span></div>
@@ -1622,7 +1882,9 @@
     <div class="wrap">
       <div class="eyebrow"><span class="n">02</span> How the course works</div>
       <p class="lead">
-        A carefully selected list of TED talks and games forms the "content" of this course. We do not expect students to learn or reproduce this content; rather, the TED talks and games are meant to <b>spark inquiry and discussion</b>. All sprint days (except project days) look like this:
+        A carefully selected list of TED talks and games forms the "content" of this course. We do not expect students
+        to learn or reproduce this content; rather, the TED talks and games are meant to <b>spark inquiry and
+          discussion</b>. All sprint days (except project days) look like this:
       </p>
 
       <div class="dflow2">
@@ -1630,70 +1892,74 @@
           <span class="dnum">01</span>
           <div>
             <h4>TED Talk / Game (45 - 90 mins)</h4>
-            <p>Students watch the TED talk, or participate in the game. They can take notes if they wish to, or in the case of the talk, watch it more than once. Supplementary material might be provided for students to explore before the next activity.</p>
-          </div>
-        </div>
-        <div class="dsep2">↓</div>
-        <div class="dstep2">
-          <span class="dnum">01</span>
-          <div>
-            <h4>Question Generation (45 mins)</h4>
-            <p>Students work individually at first, and then in small groups, to come up with their own questions to ask, in response to the TED talk or game.</p>
+            <p>Students watch the TED talk, or participate in the game. They can take notes if they wish to, or in the
+              case of the talk, watch it more than once. Supplementary material might be provided for students to
+              explore before the next activity.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
         <div class="dstep2">
           <span class="dnum">02</span>
           <div>
-            <h4>Question Curation by Instructors (30 mins - break for students)</h4>
-            <p>Instructors curate the questions submitted by students, and create a list of 5-6 shared questions for the cohort.</p>
+            <h4>Question Generation (45 mins)</h4>
+            <p>Students work individually at first, and then in small groups, to come up with their own questions to
+              ask, in response to the TED talk or game.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
         <div class="dstep2">
           <span class="dnum">03</span>
           <div>
-            <h4>Self-Directed Research (45 - 90 mins)</h4>
-            <p>Students research the curated list of 5-6 questions, in order to come up with their answers, and find supporting evidence. Given the open-ended nature of questions students are encouraged to ask, it is very unlikely that a group of students will approach their answer in the same way.</p>
+            <h4>Question Curation by Instructors (30 mins - break for students)</h4>
+            <p>Instructors curate the questions submitted by students, and create a list of 5-6 shared questions for the
+              cohort.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
         <div class="dstep2">
           <span class="dnum">04</span>
           <div>
-            <h4>Discussion in Small Groups (45 mins)</h4>
-            <p>Students meet in the Upper Deck (an outdoor seating area) and discuss each question within their small groups. Instructors circulate and observe, joining groups from time to time in order to provide support or pose follow-up questions.</p>
+            <h4>Self-Directed Research (45 - 90 mins)</h4>
+            <p>Students research the curated list of 5-6 questions, in order to come up with their answers, and find
+              supporting evidence. Given the open-ended nature of questions students are encouraged to ask, it is very
+              unlikely that a group of students will approach their answer in the same way.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
         <div class="dstep2">
           <span class="dnum">05</span>
           <div>
-            <h4>Full Class Discussion (45 mins)</h4>
-            <p>An instructor-led conversation with the full class in order to surface different perspectives, elevate interesting conversations from the small-group discussions, reflect on participation and discussion quality and introduce guiding frameworks for the next day.</p>
+            <h4>Discussion in Small Groups (45 mins)</h4>
+            <p>Students meet in the Upper Deck (an outdoor seating area) and discuss each question within their small
+              groups. Instructors circulate and observe, joining groups from time to time in order to provide support or
+              pose follow-up questions.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
         <div class="dstep2">
           <span class="dnum">06</span>
           <div>
-            <h4>Written Reflection (30 mins)</h4>
-            <p>Each student engages in open-ended reflection about the day, writing down anything that is on top of their minds. Usually, students tend to reflect on their evolving understanding of the content itself, or what happened in their group discussions.</p>
+            <h4>Full Class Discussion (45 mins)</h4>
+            <p>An instructor-led conversation with the full class in order to surface different perspectives, elevate
+              interesting conversations from the small-group discussions, reflect on participation and discussion
+              quality and introduce guiding frameworks for the next day.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
-        <div class="dstep2 placeholder-step">
+        <div class="dstep2">
           <span class="dnum">07</span>
           <div>
-            <h4>Digital Portfolio <span class="tag progress">Description pending</span></h4>
-            <p></p>
+            <h4>Written Reflection (30 mins)</h4>
+            <p>Each student engages in open-ended reflection about the day, writing down anything that is on top of
+              their minds. Usually, students tend to reflect on their evolving understanding of the content itself, or
+              what happened in their group discussions.</p>
           </div>
         </div>
         <div class="dsep2">↓</div>
         <div class="dstep2 placeholder-step">
           <span class="dnum">08</span>
           <div>
-            <h4>Office Hours <span class="tag progress">Description pending</span></h4>
+            <h4>Digital Portfolio & Office Hours <span class="tag progress">Description pending</span></h4>
             <p></p>
           </div>
         </div>
@@ -1705,7 +1971,6 @@
   <section id="schedule">
     <div class="wrap">
       <div class="eyebrow"><span class="n">03</span> Talks &amp; games</div>
-
       <table class="sched">
         <tr class="wkrow">
           <th colspan="2">Week 1</th>
@@ -1713,7 +1978,8 @@
         <tr>
           <th class="day">Day 1</th>
           <td><a href="https://www.ted.com/talks/dan_gilbert_why_we_make_bad_decisions">Why we make bad decisions</a>
-            <span class="kind">TED Talk</span></td>
+            <span class="kind">TED Talk</span>
+          </td>
         </tr>
         <tr>
           <th class="day">Day 2</th>
@@ -1788,7 +2054,8 @@
   <section id="outcomes">
     <div class="wrap">
       <div class="eyebrow"><span class="n">04</span> Course outcomes</div>
-      <p class="lead">These course outcome statements represent what students should be able to do through each course activity.</p>
+      <p class="lead">These course outcome statements represent what students should be able to do through each course
+        activity.</p>
 
       <div class="actgrid">
         <div class="actcard">
@@ -1800,7 +2067,7 @@
         </div>
         <div class="actcard">
           <span class="num">02</span>
-          <h3>Research</h3>
+          <h3>Self-Directed Research</h3>
           <ul>
             <li>choose a position, in response to a question</li>
             <li>gather evidence to support a position</li>
@@ -1809,7 +2076,7 @@
         </div>
         <div class="actcard">
           <span class="num">03</span>
-          <h3>Discussion</h3>
+          <h3>Small-Group Discussion</h3>
           <ul>
             <li>observe shared norms of discussion</li>
             <li>explain and reason about a chosen position</li>
@@ -1820,16 +2087,439 @@
         </div>
         <div class="actcard">
           <span class="num">04</span>
-          <h3>Reflection</h3>
+          <h3>Written Reflection</h3>
           <ul>
             <li>reflect on learning, course content, questions generated and discussions</li>
           </ul>
         </div>
       </div>
 
-      <div class="placeholder" style="margin-top:1.6rem">
+      <!-- <div class="placeholder" style="margin-top:1.6rem">
         <h3>Mapping to Critical Thinking capacities <span class="tag open">Open</span></h3>
         <p>These outcome statements will eventually be mapped to the Critical Thinking capacities from literature.</p>
+      </div> -->
+    </div>
+  </section>
+
+  <section id="sprint">
+    <div class="wrap">
+      <div class="eyebrow">Sprint plan</div>
+      <h2 class="sec">15-day sprint plan</h2>
+      <div class="ct-sprint">
+        <p class="ct-intro">The daily flow is the same across content days, but the timings shift — each block below
+          shows the real time it runs. Colours mark the kind of session; tags mark the framework in play.</p>
+        <div class="ct-legend"><span class="ct-leg"><span class="ct-dot"
+              style="background:#d7e7f2;border-color:#6ba8d4"></span>TED Talks</span><span class="ct-leg"><span
+              class="ct-dot" style="background:#f4ddc4;border-color:#d59f5f"></span>Game or Activity</span><span
+            class="ct-leg"><span class="ct-dot" style="background:#dbe8d2;border-color:#8fbb79"></span>Question
+            Generation</span><span class="ct-leg"><span class="ct-dot"
+              style="background:#f1ebc4;border-color:#cfbb52"></span>Self-Directed Research</span><span
+            class="ct-leg"><span class="ct-dot"
+              style="background:#f1d3d3;border-color:#d38f96"></span>Discussions</span><span class="ct-leg"><span
+              class="ct-dot" style="background:#d9d2ee;border-color:#a493d2"></span>Written Reflection</span><span
+            class="ct-leg"><span class="ct-dot"
+              style="background:var(--paper-2);border-color:var(--hair-strong)"></span>Project / Logistics</span></div>
+        <div class="ct-weeks">
+          <details class="ct-week" open>
+            <summary class="ct-week-head"><span class="ct-week-title">Week 1</span><span class="ct-week-dates">Mon 3 –
+                Fri 7 Aug</span></summary>
+            <div class="ct-week-body">
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 1</span><span class="ct-daytitle">Why we make
+                    bad decisions</span></summary>
+                <div class="ct-block" style="background:#f4ddc4;border-left-color:#d59f5f"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Course Introduction</span></div>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Why we make bad decisions</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Question Generation<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">5W1H, phrases</span></span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Question Generation continues &amp; Question
+                    Curation by instructors</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Full Class Discussion &amp; reinforce norms
+                    for small-group discussions</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Intention Setting &amp; Written
+                    Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Introduce the Digital Portfolio &amp;
+                    students create a blank Slides document for the same</span></div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 2</span><span class="ct-daytitle">The
+                    surprising science of happiness</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">The surprising science of happiness</span>
+                </div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Assumptions &amp; Consequences / So What?</span></span>
+                </div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Introduce Framework<span class="ct-pill" style="background:#c6dab6;color:#37552a">Question the
+                      Question</span></span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI<span
+                      class="ct-pill" style="background:#e6dca6;color:#5c5220">Question the Question</span></span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Question</span></span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Question</span></span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Full Class Discussion &amp; reinforce norms and frameworks</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Written Reflections</span></div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 3</span><span class="ct-daytitle">The Evolution
+                    of Trust · game</span></summary>
+                <div class="ct-block" style="background:#f4ddc4;border-left-color:#d59f5f"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Unplugged Gameplay of Prisoner's Dilemma
+                    (close to the Trust-game version)</span></div>
+                <div class="ct-block" style="background:#f4ddc4;border-left-color:#d59f5f"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Moderated play-through of The Evolution of
+                    Trust game</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Question Generation</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Research with gen. AI: Worked Example,
+                    online session with Praphul</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Full Class Discussion, find out if students
+                    used AI better</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Written Reflections</span></div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 4</span><span class="ct-daytitle">The evolution
+                    of compassion</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">The evolution of compassion</span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Perspective Taking</span></span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Introduce Framework<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Answer</span></span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI<span
+                      class="ct-pill" style="background:#e6dca6;color:#5c5220">Question the Answer</span></span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Answer</span></span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Answer</span></span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Full Class Discussion &amp; reinforce norms and frameworks</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Written Reflections</span></div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 5</span><span class="ct-daytitle">When ideas
+                    have sex</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">When ideas have sex</span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Introduce Framework<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Evidence</span></span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI<span
+                      class="ct-pill" style="background:#e6dca6;color:#5c5220">Question the Evidence</span></span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Evidence</span></span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Question the Evidence</span></span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Full Class Discussion, reinforce Question
+                    the Evidence</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Written Reflections</span></div>
+              </details>
+            </div>
+          </details>
+          <details class="ct-week">
+            <summary class="ct-week-head"><span class="ct-week-title">Week 2</span><span class="ct-week-dates">Mon 10 –
+                Fri 14 Aug</span></summary>
+            <div class="ct-week-body">
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 6</span><span class="ct-daytitle">Tragedy of
+                    the Commons · game</span></summary>
+                <div class="ct-block" style="background:#f4ddc4;border-left-color:#d59f5f"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Tragedy of the Commons game</span></div>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Debrief &amp; Further Resources: What is
+                    the Tragedy of the Commons?</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Introduce Framework<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Questioning Circles</span></span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Full Class Discussion (after optional
+                    break)</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Written Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio &amp; Office Hours</span>
+                </div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 7</span><span class="ct-daytitle">Dangerous
+                    Memes</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Dangerous Memes</span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">Questioning Circles</span></span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Full Class Discussion</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Written Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio &amp; Office Hours</span>
+                </div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 8</span><span class="ct-daytitle">We're
+                    building a dystopia to make people click on ads</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">We're building a dystopia just to make
+                    people click on ads</span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Full Class Discussion</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Written Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio &amp; Office Hours</span>
+                </div>
+              </details>
+              <details class="ct-day ct-project" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 9</span><span class="ct-daytitle">Review ·
+                    Belief Audit begins</span><span class="ct-tag">Project day</span></summary>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">What have we learned so far?</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">What have we learned so far?</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Students update their Digital
+                    Portfolio</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Students update their Digital
+                    Portfolio</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Students update their Digital
+                    Portfolio</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Individual: identify beliefs</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Small groups: select "belief
+                    statement"</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Document &amp; submit "belief
+                    statement"</span></div>
+              </details>
+              <details class="ct-day ct-project" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 10</span><span class="ct-daytitle">Belief Audit
+                    · research &amp; steelman</span><span class="ct-tag">Project day</span></summary>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Individual: research</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Individual: research</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Small groups: share counter-argument
+                    log</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Small groups: share counter-argument
+                    log</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Draft the "steelman"</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Course Feedback &amp; Media Selection</span>
+                </div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Course Feedback &amp; Media Selection</span>
+                </div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio &amp; Office Hours</span>
+                </div>
+              </details>
+            </div>
+          </details>
+          <details class="ct-week">
+            <summary class="ct-week-head"><span class="ct-week-title">Week 3</span><span class="ct-week-dates">Mon 17 –
+                Fri 21 Aug</span></summary>
+            <div class="ct-week-body">
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 11</span><span class="ct-daytitle">Image ReGen
+                    · game</span></summary>
+                <div class="ct-block" style="background:#f4ddc4;border-left-color:#d59f5f"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Image ReGen game</span></div>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Debrief &amp; Further Resources</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Question Generation</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI<span
+                      class="ct-pill" style="background:#e6dca6;color:#5c5220">All Frameworks</span></span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">All Frameworks</span></span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Fishbowl Discussion<span class="ct-pill"
+                      style="background:#c6dab6;color:#37552a">All Frameworks</span></span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Written Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio Feedback</span></div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 12</span><span class="ct-daytitle">Will AI make
+                    humans useless?</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Will AI make humans useless?</span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Full Class Discussion</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Written Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio Feedback</span></div>
+              </details>
+              <details class="ct-day" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 13</span><span class="ct-daytitle">Student
+                    Choice / TBD</span></summary>
+                <div class="ct-block" style="background:#d7e7f2;border-left-color:#6ba8d4"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Student Choice of Media / TBD</span></div>
+                <div class="ct-block" style="background:#dbe8d2;border-left-color:#8fbb79"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Question Generation</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1ebc4;border-left-color:#cfbb52"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Self-Directed Research with AI</span></div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Discussion in Small Groups</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:#f1d3d3;border-left-color:#d38f96"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Full Class Discussion</span></div>
+                <div class="ct-block" style="background:#d9d2ee;border-left-color:#a493d2"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Written Reflections</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio Feedback</span></div>
+              </details>
+              <details class="ct-day ct-project" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 14</span><span class="ct-daytitle">Belief Audit
+                    · critique &amp; refine</span><span class="ct-tag">Project day</span></summary>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Small groups: present &amp; critique
+                    "steelman"</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Small groups: present &amp; critique
+                    "steelman"</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Individual: refine the "steelman"</span>
+                </div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Individual: refine the "steelman"</span>
+                </div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Individual: written reflection</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Digital Portfolio Feedback</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Digital Portfolio Feedback</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Digital Portfolio Feedback</span></div>
+              </details>
+              <details class="ct-day ct-project" open>
+                <summary class="ct-day-head"><span class="ct-daynum">Day 15</span><span class="ct-daytitle">Project
+                    Presentations</span><span class="ct-tag">Project day</span></summary>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">08:30–09:15</span><span class="ct-body">Prepare to present</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">09:15–10:00</span><span class="ct-body">Prepare to present</span></div>
+                <div class="ct-sep">Break · 10:00–10:15</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">10:15–11:00</span><span class="ct-body">Project Presentations</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:00–11:45</span><span class="ct-body">Project Presentations</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">11:45–12:30</span><span class="ct-body">Project Presentations</span></div>
+                <div class="ct-sep">Lunch · 12:30–13:30</div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">13:30–14:15</span><span class="ct-body">Project Presentations</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">14:30–15:00</span><span class="ct-body">Project Presentations</span></div>
+                <div class="ct-block" style="background:var(--paper-2);border-left-color:var(--hair-strong)"><span
+                    class="ct-time">15:00–15:30</span><span class="ct-body">Project Presentations</span></div>
+              </details>
+            </div>
+          </details>
+        </div>
       </div>
     </div>
   </section>
@@ -1843,7 +2533,8 @@
         incrementally over the course.</p>
 
       <h3 style="font-size:1.2rem;margin:2rem 0 1rem">Question Generation frameworks</h3>
-      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem">P.S. Developed primarily for TED talks. Would they also work for games? <span class="tag open">Open</span></p>
+      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem">P.S. Developed primarily for TED talks. Would
+        they also work for games? <span class="tag open">Open</span></p>
 
       <div class="guides">
         <div class="gcard">
@@ -1853,7 +2544,8 @@
         </div>
         <div class="gcard">
           <h3>"Connection" words</h3>
-          <p>Words or phrases that connect the TED talk or game to current events or systems in the world, to spark connections.</p>
+          <p>Words or phrases that connect the TED talk or game to current events or systems in the world, to spark
+            connections.</p>
         </div>
         <div class="gcard">
           <h3>Assumptions and Consequences</h3>
@@ -1874,14 +2566,19 @@
         </div>
         <div class="gcard">
           <h3>Questioning Circles</h3>
-          <p>Three domains questions can draw from: <br/>
-            <b>You</b> (personal experience), <b>the Talk</b> (what the speaker says), and <b>the World</b> (the real world, or another talk). <br/>Combine at least two — e.g. You + Talk: "If you were in the speaker's position, would you have reached the same conclusion?" All three can also be combined at once.</p>
+          <p>Three domains questions can draw from: <br />
+            <b>You</b> (personal experience), <b>the Talk</b> (what the speaker says), and <b>the World</b> (the real
+            world, or another talk). <br />Combine at least two — e.g. You + Talk: "If you were in the speaker's
+            position, would you have reached the same conclusion?" All three can also be combined at once.
+          </p>
         </div>
       </div>
 
-      <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Discussion frameworks <span class="tag progress">In Progress</span>
+      <h3 style="font-size:1.2rem;margin:2.2rem 0 1rem">Discussion frameworks <span class="tag progress">In
+          Progress</span>
       </h3>
-      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem">Named, but how each one works is still to be figured out. </p>
+      <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:1rem">Named, but how each one works is still to be
+        figured out. </p>
       <div class="chips">
         <span class="chip blank-chip">Discussion Norms</span>
         <span class="chip blank-chip">Ladder of Inference</span>
@@ -1895,20 +2592,25 @@
     <div class="wrap">
       <div class="eyebrow"><span class="n">06</span> Activity guides</div>
       <h2 class="sec">How each activity runs</h2>
-      <p class="lead">This section will house detailed guides that instructors can use to run every activity in the course. Still a work-in-progress. <span class="tag progress">In Progress</span></p>
+      <p class="lead">This section will house detailed guides that instructors can use to run every activity in the
+        course. Still a work-in-progress. <span class="tag progress">In Progress</span></p>
 
       <!-- QG full guide -->
       <div class="guidedoc" id="guide-qg">
         <h3>Question Generation</h3>
         <p class="meta">Maps to the Question Generation activity · 45 minutes · follows every TED talk and game.</p>
-        <p class="prose">Students work individually and then in groups to generate open-ended questions that will lead to meaningful, interesting discussion. The talks and games are selected to spark inquiry; hence student-generated questions need not focus solely on the topic at hand — allow students to go off on tangents if they wish to!</p>
+        <p class="prose">Students work individually and then in groups to generate open-ended questions that will lead
+          to meaningful, interesting discussion. The talks and games are selected to spark inquiry; hence
+          student-generated questions need not focus solely on the topic at hand — allow students to go off on tangents
+          if they wish to!</p>
 
         <div class="stage">
           <div class="sh">
             <h4>Prep — before the session</h4>
           </div>
           <ul>
-            <li>Decide the framework of the day and have 1–2 example questions ready that are <em>not</em> drawn from the talk's
+            <li>Decide the framework of the day and have 1–2 example questions ready that are <em>not</em> drawn from
+              the talk's
               topic.</li>
             <li>Confirm the Google Form for question submission is created and shared on LearnX.</li>
             <li>Check that students are seated in their groups, and that each group has a device-free space to write.
@@ -1983,8 +2685,9 @@
         <div class="callout">
           <div class="h">Selecting questions for discussion</div>
           Submitted questions are <b>not evaluated for grades</b>. The <a href="#rubric">Question Quality Rubric</a> is
-          used to select which of the student-submitted questions are best suited for discussion. We will likely use an AI tool to help us compile the student-submitted questions as per the rubric. <span
-            class="tag progress">In progress</span>
+          used to select which of the student-submitted questions are best suited for discussion. We will likely use an
+          AI tool to help us compile the student-submitted questions as per the rubric. <span class="tag progress">In
+            progress</span>
         </div>
       </div>
   </section>
@@ -1998,7 +2701,8 @@
         <b>not for grades</b>. Questions are coded separately on four criteria, each at three levels. Interpret the
         student's intended meaning as charitably as possible; except for Articulation, score the underlying question
         rather than its wording; evaluate each criterion independently. The four criteria are the four adjectives in the
-        Question Generation activity statement.</p>
+        Question Generation activity statement.
+      </p>
 
       <div class="rubric">
         <div class="crit">
@@ -2189,7 +2893,8 @@
     <div class="wrap">
       <div class="eyebrow"><span class="n">09</span> For the teaching team</div>
       <h2 class="sec">To-Do</h2>
-      <p class="lead">A running inventory of what still needs to be planned or completed before the start of the course — including the open questions the team has flagged.</p>
+      <p class="lead">A running inventory of what still needs to be planned or completed before the start of the course
+        — including the open questions the team has flagged.</p>
 
       <div class="outgrid">
         <div class="outcol">
@@ -2205,7 +2910,7 @@
         </div>
       </div>
 
-      <h3 style="font-size:1.3rem;margin:2.4rem 0 1rem">Open questions</h3>
+      <!-- <h3 style="font-size:1.3rem;margin:2.4rem 0 1rem">Open questions</h3>
       <div class="oq">
         <div class="oqrow"><span class="id">a</span><span class="q">How important is it for students to commit to a
             provisional position, then reflect on and revise it once after research and again after discussion?<span
@@ -2238,9 +2943,9 @@
             students for fishbowl, and to ensure feedback is honest but kind and that reflection happens?</span></div>
         <div class="oqrow"><span class="id">m</span><span class="q">For the Self-Directed Research with AI sessions:
             what is the AI-use policy, what is the session format, and who runs the demo and how?</span></div>
-      </div>
+      </div> -->
 
-      <h3 style="font-size:1.2rem;margin:2.4rem 0 1rem">Candidate talks &amp; games <span class="tag progress"
+      <!-- <h3 style="font-size:1.2rem;margin:2.4rem 0 1rem">Candidate talks &amp; games <span class="tag progress"
           style="vertical-align:middle">likely, not final</span></h3>
       <div class="chips">
         <span class="chip">Dan Gilbert — Why we make bad decisions / The surprising science of happiness</span>
@@ -2250,14 +2955,14 @@
         <span class="chip">Dan Dennett — Dangerous memes</span>
         <span class="chip">Zeynep Tufekci — Machine intelligence makes human morals more important</span>
         <span class="chip">Akram Awad — Will AI make humans useless?</span>
-      </div>
+      </div> -->
 
-      <div class="placeholder" style="margin-top:2rem">
+      <!-- <div class="placeholder" style="margin-top:2rem">
         <h3>Revised student-facing description <span class="tag progress">In progress</span></h3>
         <p>The original student-facing description is set aside pending a rewrite that incorporates everything
           registered here — the sprint format, the Belief Audit, the activities and their framing, and the AI-as-context
           stance. To be written once the outcomes list is settled.</p>
-      </div>
+      </div> -->
     </div>
   </section>
 
